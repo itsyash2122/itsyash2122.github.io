@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head><style> 
+      #Goa :hover{
+        
+        position: absolute;
+        animation-name: example;
+        animation-iteration-count: 1;
+        animation-duration: 150ms;
+        
+        animation-timing-function: ease-in-out;
+
+      }
+      
+      @keyframes example {
+        0%   { left:0px; top:0px;}
+        100%  { left:10px; top:0px;}
+        
+      }
+      </style>
+        <title>Goa</title>
+        <link rel="stylesheet" href="style/State.css">
+        <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    
+    <script type="text/javascript" >
+    var andhra_data=[['Dictrict','Confirmed']];
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      
+
+      function drawChart() {
+        
+          var x='https://api.covid19india.org/v2/state_district_wise.json';
+          
+          $.getJSON(x,function(statedata){
+            
+          for (i=0;i<statedata.length;i=i+1){
+            if(statedata[i].state=="Goa"){
+              for (j=0;j<statedata[i].districtData.length;j=j+1){
+                andhra_data.push([statedata[i].districtData[j].district,statedata[i].districtData[j].confirmed]);
+                
+              }
+              
+              
+            }
+
+          }
+
+          var data = google.visualization.arrayToDataTable(andhra_data);
+        console.log(data);
+      var options = {
+        legend: 'none',
+        pieSliceText: 'label',
+        title: "Goa",
+        pieStartAngle: 100
+      };
+
+        var chart = new google.visualization.PieChart(document.getElementById('Goa'));
+        chart.draw(data, options);
+
+
+        });
+        
+
+        
+      }
+    
+    </script>
+      </head>
+    <body>
+        <div class="And_and_nic">
+            <div class="title">Goa</div>
+            <div class="table">
+                <table class="internal-table"><thead><tr class="label-div"><th style="border-right-color: currentColor; border-right-width: medium; border-right-style: none; color: chocolate;">DISTRICT</th><th style="color: chocolate;">INFECTED <i class=" fa fa-arrow-up" style="transition:transform 0.2s ease-in-out; transform: none;"></i></th><th style="color: chocolate;">RECOVERED</th><th style="color: chocolate;">DEATHS</th></tr></thead><tbody><tr class="data-div" style="background: none;"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Unknown</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>49</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>43</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>South Goa</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>18</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: none;"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>North Goa</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>6</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>6</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr></tbody></table>
+                </div>
+                <div id="Goa" style="width: 400px; height: 300px; margin-left: 100px;"></div>
+        </div>
+
+
+    </body>
+</html>
