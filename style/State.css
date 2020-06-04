@@ -11,6 +11,7 @@ body {
     position: absolute;
     top: 40px;
     left: 60px;
+    height:168px;
     font-size: 68px;
     z-index: 30;
     font-weight: bold;
@@ -18,15 +19,20 @@ body {
     color: wheat;
     font-family: cursive;
 }
-.table{
+.table{margin-top: 180px;
+    margin-left: 10px;
     font-family: cursive;
     width: 50%;
+    height: 400px;
+    overflow-y: scroll;
+    
 }
 .internal-table{
-    margin-top: 140px;
-    margin-left: 80px;
+    margin-top: 10px;
+    margin-left: 60px;
     width:550px;
     height:100px;
     font-family: cursive;
+    
 
 }
