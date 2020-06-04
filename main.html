@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coronavirus Map Dashboard</title>
+        <link rel="stylesheet" href="style/stylemain.css">
+        <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+        <script src="js/data_area.js"></script>
+      </head>
+    <body>
+
+        
+
+<div class="wrapper">
+
+      <section class="map-section">
+        <div class="title">Covid 19</div>
+        <div class="india">(India)</div>
+        <div class="search-container">
+            <div class="search">
+                <input id="stateNameid" onkeyup="searchArea()" type="text" placeholder="Enter State"  />
+                <i class="fas fa-search " onkeyup="searchArea()"></i>
+            </div>
+        </div>
+
+
+
+        <div class="area-list-container">
+            <div class="area-list">
+                <div class="area-container">
+                    <div class="area-info-container">
+                        <div class="area-name">
+                            <span><b><a href="Andaman_and_nicobar.html">Andaman and Nicobar</a></b></span>   
+                        </div>
+                        <div class="area-details">
+                            <span><b>Confirmed :</b><b> 33</span>
+                            <span style="color :red"><b>Active :<b> 0</span>
+                            <span style="color :green"><b>Recovered :<b> 33</span>
+                            <span style="color :black"><b>Decreased :<b> 0</span>
+                                    </div>
+                    </div>
+                    <div class="area-number-container">
+                        <div class="area-number">
+                            1
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="map"></div>
+        <script src="js/main.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjZSfQeiXHLHZnmZVPeaIpbuOm1jzT4TA&callback=initMap"
+        async defer></script>
+           
+
+    </section>
+
+
+
+</div>
+</body>
+</html> 

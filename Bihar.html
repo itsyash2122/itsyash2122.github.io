@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head><style> 
+      #Bihar :hover{
+        
+        position: absolute;
+        animation-name: example;
+        animation-iteration-count: 1;
+        animation-duration: 150ms;
+        
+        animation-timing-function: ease-in-out;
+
+      }
+      
+      @keyframes example {
+        0%   { left:0px; top:0px;}
+        100%  { left:10px; top:0px;}
+        
+      }
+      </style>
+        <title>Bihar</title>
+
+        <link rel="stylesheet" href="style/State.css">
+        <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    
+    <script type="text/javascript" >
+    var andhra_data=[['Dictrict','Confirmed']];
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      
+
+      function drawChart() {
+        
+          var x='https://api.covid19india.org/v2/state_district_wise.json';
+          
+          $.getJSON(x,function(statedata){
+            
+          for (i=0;i<statedata.length;i=i+1){
+            if(statedata[i].state=="Bihar"){
+              for (j=0;j<statedata[i].districtData.length;j=j+1){
+                andhra_data.push([statedata[i].districtData[j].district,statedata[i].districtData[j].confirmed]);
+                
+              }
+              
+              
+            }
+
+          }
+
+          var data = google.visualization.arrayToDataTable(andhra_data);
+        console.log(data);
+      var options = {
+        legend: 'none',
+        pieSliceText: 'label',
+        title: "Bihar",
+        pieStartAngle: 100
+      };
+
+        var chart = new google.visualization.PieChart(document.getElementById('Bihar'));
+        chart.draw(data, options);
+
+
+        });
+        
+
+        
+      }
+    
+    </script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+      var dailyConf=[];
+          var dailyRec=[];
+          var dailyDeaths=[];
+    
+      window.onload = function () {
+        var y="https://api.covid19india.org/states_daily.json";
+    
+        $.getJSON(y,function(stateDailydata){
+          console.log(stateDailydata.states_daily[4].date);
+                
+                for (i=0;i<stateDailydata.states_daily.length-3;i=i+3){
+                      dailyConf.push({label: stateDailydata.states_daily[i].date,y: parseInt(stateDailydata.states_daily[i].br)});
+                      dailyRec.push({label:stateDailydata.states_daily[i].date,y:parseInt(stateDailydata.states_daily[i+1].br)});
+                      
+                      dailyDeaths.push({label:stateDailydata.states_daily[i].date,y:parseInt(stateDailydata.states_daily[i+2].br)});
+                      
+                    }
+                    
+      var chart = new CanvasJS.Chart("chartContainer",
+       {
+        theme:"dark1",
+        animationEnabled: true,
+        title:{
+          text: "Daily Chart"
+        },
+        
+        axisY: {
+          title: "No. of cases",
+          includeZero: false,
+        },
+        legend:{
+          cursor: "pointer",
+          fontSize: 16,
+          itemclick: toggleDataSeries
+        },
+        toolTip:{
+          shared: true
+        },
+        data: [{
+          name: "Confirmed",
+          type: "spline",
+          yValueFormatString: "###",
+          showInLegend: true,
+          dataPoints: dailyConf
+        },
+        {
+          name: "Deaths",
+          type: "spline",
+          yValueFormatString: "###",
+          showInLegend: true,
+          dataPoints: dailyDeaths
+        },
+        {
+          name: "Recovered",
+          type: "spline",
+          yValueFormatString: "### ",
+          showInLegend: true,
+          dataPoints: dailyRec
+        }]
+      });
+      
+      chart.render();
+      
+      function toggleDataSeries(e){
+        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+          e.dataSeries.visible = false;
+        }
+        else{
+          e.dataSeries.visible = true;
+        }
+        chart.render();
+      }
+    });
+      
+      }
+      </script>
+      </head>
+    <body>
+        <div class="And_and_nic">
+            <div class="title">Bihar</div>
+            <div class="table" >
+                <table class="internal-table"><thead><tr class="label-div"><th style="border-right-color: currentColor; border-right-width: medium; border-right-style: none; color:chocolate">DISTRICT</th><th style="color:chocolate">INFECTED <i class=" fa fa-arrow-up" style="transition:transform 0.2s ease-in-out; transform: none;"></i></th style="color:chocolate"><th style="color:chocolate">RECOVERED</th><th style="color:chocolate">DEATHS</th></tr></thead><tbody><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Patna</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">6</i></div><span>260</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>137</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>2</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Begusarai</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">2</i></div><span>247</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>84</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>2</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Rohtas</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>208</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>121</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Madhubani</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>195</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>63</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Bhagalpur</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">7</i></div><span>190</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>67</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Khagaria</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">3</i></div><span>172</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>72</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>3</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Jehanabad</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>161</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>83</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Munger</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">1</i></div><span>158</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>127</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Katihar</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>150</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>47</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Banka</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>118</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>59</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Buxar</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">1</i></div><span>118</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>92</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Gopalganj</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">2</i></div><span>114</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>74</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Nalanda</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>110</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>81</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>East Champaran</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>106</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>35</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Purnia</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">19</i></div><span>105</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>16</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Darbhanga</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>104</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>15</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Sheikhpura</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">6</i></div><span>104</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>14</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Nawada</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>93</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>43</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Madhepura</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">8</i></div><span>91</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>35</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Bhojpur</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>89</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>34</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>2</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Siwan</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>89</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>48</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>2</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Gaya</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">3</i></div><span>84</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>20</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Supaul</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">2</i></div><span>83</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>24</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Samastipur</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">6</i></div><span>81</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>42</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Saran</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">2</i></div><span>81</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>19</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Kaimur</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>78</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>35</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Kishanganj</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">4</i></div><span>76</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>13</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Aurangabad</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>74</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>27</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Vaishali</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>69</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>28</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>2</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Saharsa</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>67</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>46</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Muzaffarpur</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>66</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>27</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Araria</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">12</i></div><span>59</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>12</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Lakhisarai</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">18</i></div><span>56</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>15</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Sitamarhi</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>49</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>8</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Arwal</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>47</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>25</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>West Champaran</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>45</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>34</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Jamui</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">1</i></div><span>42</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>11</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Sheohar</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">1</i></div><span>10</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>8</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr></tbody></table>
+            </div><div id="chartContainer" style=" width: 570px; height: 350px; margin-top:15px;margin-right: 70px; float: right;"></div> 
+          </div>
+            <div id="Bihar" style="width: 400px; height: 300px;  margin-top:50px;margin-left:150px;"></div>
+
+
+    </body>
+</html>
