@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        
+
+        <title>Country Data live</title>
+        <link rel="stylesheet" href="style/State.css">
+        <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    
+    <script type="text/javascript" >
+        var andhra_data=[['State','Confirmed']];
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      
+
+      function drawChart() {
+        
+          var x='https://api.covid19india.org/data.json';
+          
+          $.getJSON(x,function(stated){
+            
+          for (i=1;i<stated.statewise.length;i=i+1){
+            
+              
+                andhra_data.push([stated.statewise[i].state,parseInt(stated.statewise[i].confirmed)]);
+              
+
+          }
+
+          var data = google.visualization.arrayToDataTable(andhra_data);
+        console.log(data);
+      var options = {
+        legend: 'none',
+        pieSliceText: 'label',
+        title: "India",
+        pieStartAngle: 100
+      };
+
+        var chart = new google.visualization.PieChart(document.getElementById('cntry'));
+        chart.draw(data, options);
+
+
+        });
+        
+
+        
+      }
+</script>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+  var dailyConf=[];
+      var dailyRec=[];
+      var dailyDeaths=[];
+
+  window.onload = function () {
+    var y="https://api.covid19india.org/data.json";
+
+    $.getJSON(y,function(Dailydata){
+            
+            for (i=0;i<Dailydata.cases_time_series.length;i=i+1){
+                  dailyConf.push({label: Dailydata.cases_time_series[i].date,y: parseInt(Dailydata.cases_time_series[i].dailyconfirmed)});
+                  dailyRec.push({label:Dailydata.cases_time_series[i].date,y:parseInt(Dailydata.cases_time_series[i].dailyrecovered)});
+                  
+                  dailyDeaths.push({label:Dailydata.cases_time_series[i].date,y:parseInt(Dailydata.cases_time_series[i].dailydeceased)});
+                  
+                }
+                
+  var chart = new CanvasJS.Chart("chartContainer",
+   {
+    theme:"dark1",
+    animationEnabled: true,
+    title:{
+      text: "Daily Chart"
+    },
+    
+    axisY: {
+      title: "No. of cases",
+      includeZero: false,
+    },
+    legend:{
+      cursor: "pointer",
+      fontSize: 16,
+      itemclick: toggleDataSeries
+    },
+    toolTip:{
+      shared: true
+    },
+    data: [{
+      name: "Confirmed",
+      type: "spline",
+      yValueFormatString: "###",
+      showInLegend: true,
+      dataPoints: dailyConf
+    },
+    {
+      name: "Deaths",
+      type: "spline",
+      yValueFormatString: "###",
+      showInLegend: true,
+      dataPoints: dailyDeaths
+    },
+    {
+      name: "Recovered",
+      type: "spline",
+      yValueFormatString: "### ",
+      showInLegend: true,
+      dataPoints: dailyRec
+    }]
+  });
+  
+  chart.render();
+  
+  function toggleDataSeries(e){
+    if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+      e.dataSeries.visible = false;
+    }
+    else{
+      e.dataSeries.visible = true;
+    }
+    chart.render();
+  }
+});
+  
+  }
+  </script>
+
+        
+
+    
+    
+    </head>
+    <body>
+        
+        <div class="title">Country Data(Live)</div>
+            
+            
+        <div class="country-total-container">
+            <div class="country-total">
+            <h2 style="margin-left:40px ; margin-top:3px;font-family: cursive; color:saddlebrown ;">Total Confirmed</h2>
+            <h4 id="ct" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:saddlebrown;">224162</h4>
+        </div></div>
+        <div class="country-active-container">
+            <div id="ca" class="country-active">
+            <h2 style="margin-left:40px ; margin-top:3px;font-family: cursive; color: darkred;">Total Active</h2>
+            <h4 id="ca" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:darkred;">110430</h4>
+        </div></div>
+        <div class="country-recovered-container">
+            <div id="cr" class="country-recovered">
+            <h2 style="margin-left:40px ; margin-top:3px;font-family: cursive; color:darkgreen;">Total Recovered</h2>
+            <h4 id="cr" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:darkgreen;">107419</h4>
+        </div></div>
+        <div class="country-deaths-container">
+            <div id="cd" class="country-deaths">
+            <h2 style="margin-left:40px ; margin-top:3px;font-family: cursive; color:black;">Total Deaths</h2>
+            <h4 id="cd" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:black;">6301</h4>
+        </div>
+        </div>
+   
+    <div id="chartContainer" style=" width: 570px; height: 350px;margin-bottom: 10px;margin-top:170px;margin-left:600px;"></div> 
+    <div id="cntry" style="width: 400px; height: 300px;  margin-top:80px;margin-left:120px;"></div>
+    
+              
+    </body>
+</html>

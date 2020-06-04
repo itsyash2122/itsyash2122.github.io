@@ -37,6 +37,43 @@ body {
     
 
 }
-#countrydata{
-    
+.country-total-container{
+    width: 270px;
+    height:100px;
+    background-color: darksalmon;
+    position: absolute;
+    z-index: 30;
+    top: 145px;
+    left: 200px;
+    border-radius: 30px;
+}
+.country-active-container{
+    width: 270px;
+    height: 100px;
+    background-color: darksalmon;
+    position: absolute;
+    z-index: 30;
+    top: 255px;
+    left: 200px;
+    border-radius: 30px;
+}
+.country-recovered-container{
+    width: 270px;
+    height: 100px;
+    background-color: darksalmon;
+    position: absolute;
+    z-index: 30;
+    top: 365px;
+    left: 200px;
+    border-radius: 30px;
+}
+.country-deaths-container{
+    width: 270px;
+    height: 100px;
+    background-color: darksalmon;
+    position: absolute;
+    z-index: 30;
+    top: 475px;
+    left: 200px;
+    border-radius: 30px;
 }
