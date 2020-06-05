@@ -128,11 +128,24 @@
   
   }
   </script>
-
-        
-
+<script>
+var x='https://api.covid19india.org/data.json';
+var tc="";
+var ta="";
+var tr="";
+var td="";          
+$.getJSON(x,function(stated){
+  len=stated.cases_time_series.length;
+   tc=stated.cases_time_series[len-1].totalconfirmed;
+   
+   tr=stated.cases_time_series[len-1].totalrecovered;
+   td=stated.cases_time_series[len-1].totaldeceased; 
+   ta=tc-tr-td;
     
+
+});
     
+</script>
     </head>
     <body>
         
@@ -141,28 +154,28 @@
             
         <div class="country-total-container">
             <div class="country-total">
-            <h2 style="margin-left:40px ; margin-top:3px;font-family: cursive; color:saddlebrown ;">Total Confirmed</h2>
-            <h4 id="ct" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:saddlebrown;">224162</h4>
+            <h2 style="margin-left:80px ; margin-top:3px;font-family: cursive; color:whitesmoke ;">Total Confirmed</h2>
+            <h4 id="ct" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:blanchedalmond;">226723</h4>
         </div></div>
         <div class="country-active-container">
             <div id="ca" class="country-active">
-            <h2 style="margin-left:40px ; margin-top:3px;font-family: cursive; color: darkred;">Total Active</h2>
-            <h4 id="ca" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:darkred;">110430</h4>
+            <h2 style="margin-left:80px ; margin-top:3px;font-family: cursive; color: whitesmoke;">Total Active</h2>
+            <h4 id="ca" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:blanchedalmond;">111907</h4>
         </div></div>
         <div class="country-recovered-container">
             <div id="cr" class="country-recovered">
-            <h2 style="margin-left:40px ; margin-top:3px;font-family: cursive; color:darkgreen;">Total Recovered</h2>
-            <h4 id="cr" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:darkgreen;">107419</h4>
+            <h2 style="margin-left:80px ; margin-top:3px;font-family: cursive; color:whitesmoke;">Total Recovered</h2>
+            <h4 id="cr" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:blanchedalmond;">108454</h4>
         </div></div>
         <div class="country-deaths-container">
             <div id="cd" class="country-deaths">
-            <h2 style="margin-left:40px ; margin-top:3px;font-family: cursive; color:black;">Total Deaths</h2>
-            <h4 id="cd" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:black;">6301</h4>
+            <h2 style="margin-left:80px ; margin-top:3px;font-family: cursive; color:whitesmoke;">Total Deaths</h2>
+            <h4 id="cd" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:blanchedalmond;">6362</h4>
         </div>
         </div>
    
-    <div id="chartContainer" style=" width: 570px; height: 350px;margin-bottom: 10px;margin-top:170px;margin-left:600px;"></div> 
-    <div id="cntry" style="width: 400px; height: 300px;  margin-top:80px;margin-left:120px;"></div>
+    <div id="chartContainer" style=" width: 570px; height: 350px;margin-bottom: 10px;margin-top:170px;margin-left:700px;"></div> 
+    <div id="cntry" style="width: 570px; height: 350px;  margin-top:80px;margin-left:60px;"></div>
     
               
     </body>

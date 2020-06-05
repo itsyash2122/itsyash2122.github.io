@@ -20,7 +20,7 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     color: wheat;
-    font-family: cursive;
+    font-family: c"Times New Roman", Times, serif;
 }
 
 .search-container {
@@ -35,7 +35,7 @@ body {
 }
 
 .search {
-    font-family: cursive;
+    font-family: c"Times New Roman", Times, serif;
     height: 100%;
     display: flex;
     align-items: center;
@@ -44,7 +44,7 @@ body {
 }
 
 .search input {
-    font-family: cursive;
+    font-family: c"Times New Roman", Times, serif;
     width: 100%;
     font-size: 25px;
     border: none;
@@ -62,7 +62,7 @@ body {
 }
 
 .india{
-    font-family: cursive;
+    font-family: "Times New Roman", Times, serif;
     position: absolute;
     top: 153px;
     left: 100px;
@@ -89,7 +89,7 @@ body {
     padding-right: 20px;
     overflow-y: scroll;
     height: 100%;
-    font-family: cursive;
+    font-family: "Times New Roman", Times, serif;
 }
 
 .area-container {
@@ -132,7 +132,7 @@ body {
     display: block;
 }
 .area-name{
-    font-family: cursive;
+    font-family: "Times New Roman", Times, serif;
     font-size: 21px;
     color: rgb(138, 2, 2);
     margin-top: 20px;
@@ -140,7 +140,7 @@ body {
 }
 
 .area-name span {
-    font-family: cursive;
+    font-family: c"Times New Roman", Times, serif;
     color: rgb(138, 2, 2);
     display: block;
 }

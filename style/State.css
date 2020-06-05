@@ -12,68 +12,74 @@ body {
     position: absolute;
     top: 40px;
     left: 60px;
-    height:168px;
-    font-size: 68px;
+    height:20px;
+    font-size: 60px;
     z-index: 30;
     font-weight: bold;
     text-transform: uppercase;
     color: wheat;
-    font-family: cursive;
+    font-family:"Times New Roman", Times, serif;
 }
-.table{margin-top: 180px;
-    margin-left: 60px;
-    font-family: cursive;
+.table{margin-top: 170px;
+    margin-left: 20px;
+    font-family: "Times New Roman", Times, serif;
     width: 47%;
     height: 400px;
     overflow-y: scroll;
+    
+    
     
 }
 .internal-table{
     margin-top: 10px;
     margin-left: 60px;
-    width:550px;
+    width:520px;
     height:100px;
-    font-family: cursive;
-    
+    font-family: "Times New Roman", Times, serif; 
 
 }
 .country-total-container{
-    width: 270px;
+    width: 450px;
     height:100px;
-    background-color: darksalmon;
+    background-color: #373838;
     position: absolute;
     z-index: 30;
     top: 145px;
-    left: 200px;
-    border-radius: 30px;
+    left: 100px;
+    border-radius: 15px;
 }
 .country-active-container{
-    width: 270px;
+    width: 450px;
     height: 100px;
-    background-color: darksalmon;
+    background-color: #373838;
     position: absolute;
     z-index: 30;
     top: 255px;
-    left: 200px;
-    border-radius: 30px;
+    left: 100px;
+    border-radius: 15px;
 }
 .country-recovered-container{
-    width: 270px;
+    width: 450px;
     height: 100px;
-    background-color: darksalmon;
+    background-color: #373838;
     position: absolute;
     z-index: 30;
     top: 365px;
-    left: 200px;
-    border-radius: 30px;
+    left: 100px;
+    border-radius: 15px;
 }
 .country-deaths-container{
-    width: 270px;
+    width: 450px;
     height: 100px;
-    background-color: darksalmon;
+    background-color: #373838;
     position: absolute;
     z-index: 30;
     top: 475px;
-    left: 200px;
-    border-radius: 30px;
+    left: 100px;
+    border-radius: 15px;
+}
+
+
+.statemap{
+    margin-left:0px;
 }
