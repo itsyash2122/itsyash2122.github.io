@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
     background-image: url(https://img.freepik.com/free-vector/dark-low-poly-background_1048-7971.jpg?size=626&ext=jpg);
+    
 }
 
 
@@ -21,22 +22,20 @@ body {
     font-family:"Times New Roman", Times, serif;
 }
 .table{margin-top: 170px;
-    margin-left: 20px;
+    margin-left: 60px;
     font-family: "Times New Roman", Times, serif;
-    width: 47%;
+    width:600px;
     height: 400px;
     overflow-y: scroll;
-    
-    
-    
+    position:absolute;   
 }
 .internal-table{
     margin-top: 10px;
     margin-left: 60px;
-    width:520px;
+    width:570px;
     height:100px;
     font-family: "Times New Roman", Times, serif; 
-
+    position: absolute;
 }
 .country-total-container{
     width: 450px;

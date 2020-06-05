@@ -3,12 +3,15 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    width:100%;
+  
 } 
    
 
 
 #map {
     height: 100vh;
+    widows: 100%;
 }
 
 .title {
@@ -164,7 +167,7 @@ body {
     position: absolute;
     z-index: 30;
     top: 20px;
-    left: 1000px;
+    left: 900px;
     border-radius: 30px;
 }
 
