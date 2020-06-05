@@ -98,6 +98,7 @@ var infoWindow;
 }
 
 function display_area(data) {
+ 
     
     var areahtml = "";
 

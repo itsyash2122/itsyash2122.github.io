@@ -145,15 +145,39 @@
      
      }
      </script>
-</head>
+<script>
+      
+        x="https://api.covid19india.org/v2/state_district_wise.json";
+        $.getJSON(x,function(stated){
+          var tableD="";
+         
+        stated.forEach(function(s, index){
+          if(s.state=="Goa"){
+                for (j=0;j<s.districtData.length;j=j+1){
+        
+        tableD+=`<tr class="data-div" style="background: none;">
+                          <td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>${s.districtData[j].district}</td>
+                          <td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>${s.districtData[j].confirmed}</span></td>
+                          <td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>${s.districtData[j].recovered}</span></td>
+                          <td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>${s.districtData[j].deceased}</span></td>
+                          
+                        </tr>`}
+                      }
+                      });
+            
+                console.log(tableD);
+                document.querySelector('.tbody').innerHTML = tableD;
+        });
+      </script>
+      </head>
     <body>
-        <div class="And_and_nic">
+        
             <div class="title">Goa</div>
             <div class="table">
-                <table class="internal-table"><thead><tr class="label-div"><th style="border-right-color: currentColor; border-right-width: medium; border-right-style: none; color: chocolate;">DISTRICT</th><th style="color: chocolate;">INFECTED <i class=" fa fa-arrow-up" style="transition:transform 0.2s ease-in-out; transform: none;"></i></th><th style="color: chocolate;">RECOVERED</th><th style="color: chocolate;">DEATHS</th></tr></thead><tbody><tr class="data-div" style="background: none;"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>Unknown</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>49</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>43</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: rgb(38, 37, 41);"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>South Goa</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>18</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>1</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr><tr class="data-div" style="background: none;"><td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>North Goa</td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>6</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>6</span></td><td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>0</span></td><td><div>&nbsp;</div></td></tr></tbody></table>
+                <table class="internal-table"><thead><tr class="label-div"><th style="border-right-color: currentColor; border-right-width: medium; border-right-style: none; color: chocolate;">DISTRICT</th><th style="color: chocolate;">INFECTED <i class=" fa fa-arrow-up" style="transition:transform 0.2s ease-in-out; transform: none;"></i></th><th style="color: chocolate;">RECOVERED</th><th style="color: chocolate;">DEATHS</th></tr></thead><tbody class="tbody"></tbody></table>
                 </div>
                 <div id="chartContainer" style=" width: 570px; height: 350px; margin-top:15px;margin-right: 70px; float: right;"></div> 
-        </div>
+        
                 <div id="Goa" style="width: 400px; height: 300px;  margin-top:50px;margin-left:150px;"></div>
 
 
