@@ -10,8 +10,9 @@ body {
 
 
 .title {
+    
     position: absolute;
-    top: 40px;
+    top: 70px;
     left: 60px;
     height:20px;
     font-size: 60px;
@@ -22,7 +23,7 @@ body {
     font-family:"Times New Roman", Times, serif;
 }
 .table{margin-top: 170px;
-    margin-left: 60px;
+    margin-left: 40px;
     font-family: "Times New Roman", Times, serif;
     width:600px;
     height: 400px;
@@ -31,7 +32,7 @@ body {
 }
 .internal-table{
     margin-top: 10px;
-    margin-left: 60px;
+    margin-left: 10px;
     width:570px;
     height:100px;
     font-family: "Times New Roman", Times, serif; 

@@ -75,7 +75,7 @@
     theme:"dark1",
     animationEnabled: true,
     title:{
-      text: "Daily Chart"
+      text: "India's Daily Chart"
     },
     
     axisY: {
@@ -147,30 +147,36 @@ $.getJSON(x,function(stated){
     
 </script>
     </head>
-    <body>
+    <body><div style="margin-top:2px;width:250vh; height:52px;background-color: #424949;">
+      <table style="margin-left: 60px;">
+      <tr style="font-size:20px;margin-top:6px;font-family:'Times New Roman', Times, serif;background-color:ghostwhite;" >
+      <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="main.html">HOME</a></td>
+      <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="country.html">INDIA</a></td>
+      <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="world.html">WORLD</a></td>
+      </tr></table></div>
         
-        <div class="title">Country Data(Live)</div>
+        <div class="title">INDIA's Data(Live)</div>
             
             
         <div class="country-total-container">
             <div class="country-total">
-            <h2 style="margin-left:80px ; margin-top:3px;font-family: cursive; color:whitesmoke ;">Total Confirmed</h2>
-            <h4 id="ct" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:blanchedalmond;">226723</h4>
+            <h2 style="margin-left:80px ; margin-top:3px;font-family:'Times New Roman', Times, serif; color:whitesmoke ;">Total Confirmed</h2>
+            <h4 id="ct" style="margin-left:80px ; margin-top:1px;font-family: 'Times New Roman', Times, serif; color:blanchedalmond;">226723</h4>
         </div></div>
         <div class="country-active-container">
             <div id="ca" class="country-active">
-            <h2 style="margin-left:80px ; margin-top:3px;font-family: cursive; color: whitesmoke;">Total Active</h2>
-            <h4 id="ca" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:blanchedalmond;">111907</h4>
+            <h2 style="margin-left:80px ; margin-top:3px;font-family:'Times New Roman', Times, serif; color: whitesmoke;">Total Active</h2>
+            <h4 id="ca" style="margin-left:80px ; margin-top:1px;font-family: 'Times New Roman', Times, serif; color:blanchedalmond;">111907</h4>
         </div></div>
         <div class="country-recovered-container">
             <div id="cr" class="country-recovered">
-            <h2 style="margin-left:80px ; margin-top:3px;font-family: cursive; color:whitesmoke;">Total Recovered</h2>
-            <h4 id="cr" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:blanchedalmond;">108454</h4>
+            <h2 style="margin-left:80px ; margin-top:3px;font-family: 'Times New Roman', Times, serif; color:whitesmoke;">Total Recovered</h2>
+            <h4 id="cr" style="margin-left:80px ; margin-top:1px;font-family: 'Times New Roman', Times, serif; color:blanchedalmond;">108454</h4>
         </div></div>
         <div class="country-deaths-container">
             <div id="cd" class="country-deaths">
-            <h2 style="margin-left:80px ; margin-top:3px;font-family: cursive; color:whitesmoke;">Total Deaths</h2>
-            <h4 id="cd" style="margin-left:80px ; margin-top:1px;font-family: cursive; color:blanchedalmond;">6362</h4>
+            <h2 style="margin-left:80px ; margin-top:3px;font-family:'Times New Roman', Times, serif; color:whitesmoke;">Total Deaths</h2>
+            <h4 id="cd" style="margin-left:80px ; margin-top:1px;font-family:'Times New Roman', Times, serif; color:blanchedalmond;">6362</h4>
         </div>
         </div>
    
@@ -178,5 +184,12 @@ $.getJSON(x,function(stated){
     <div id="cntry" style="width: 570px; height: 350px;  margin-top:80px;margin-left:60px;"></div>
     
               
+    <div style="position:absolute;margin-top:1000px;width:100%; height:52px;background-color: #424949;">
+        <table style="margin-left: 60px;">
+        <tr style="font-size:20px;margin-top:6px;font-family:'Times New Roman', Times, serif;" >
+        <td><marquee>The Website is based on real time data of Corona Virus across the globe</marquee></td>
+        </tr></table></div>
+            
+
     </body>
 </html>
