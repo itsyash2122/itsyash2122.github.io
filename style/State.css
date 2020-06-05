@@ -22,7 +22,8 @@ body {
     color: wheat;
     font-family:"Times New Roman", Times, serif;
 }
-.table{margin-top: 170px;
+.table{
+    margin-top: 170px;
     margin-left: 40px;
     font-family: "Times New Roman", Times, serif;
     width:600px;
