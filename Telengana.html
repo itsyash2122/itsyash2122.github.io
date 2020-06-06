@@ -37,7 +37,7 @@
           $.getJSON(x,function(statedata){
             
           for (i=0;i<statedata.length;i=i+1){
-            if(statedata[i].state=="Telengana"){
+            if(statedata[i].state=="Telangana"){
               for (j=0;j<statedata[i].districtData.length;j=j+1){
                 andhra_data.push([statedata[i].districtData[j].district,statedata[i].districtData[j].confirmed]);
                 
@@ -53,7 +53,7 @@
       var options = {
         legend: 'none',
         pieSliceText: 'label',
-        title: "Telengana",
+        title: "Telangana",
         pieStartAngle: 100
       };
 
@@ -153,7 +153,7 @@
           var tableD="";
          
         stated.forEach(function(s, index){
-          if(s.state=="Telengana"){
+          if(s.state=="Telangana"){
                 for (j=0;j<s.districtData.length;j=j+1){
         
         tableD+=`<tr class="data-div" style="background: none;">
@@ -171,9 +171,9 @@
         });
       </script>
       </head>
-    <body><div style="margin-top:2px; height:52px;background-color: #424949;">
+    <body><div style="margin-top:2px; height:52px;">
       <table style="margin-left: 60px;">
-      <tr style="font-size:20px;margin-top:6px;font-family:'Times New Roman', Times, serif;background-color:ghostwhite;" >
+      <tr style="font-size:20px;margin-top:6px;font-family:'Times New Roman', Times, serif;background-image: linear-gradient(to right,brown , yellow);" >
       <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="main.html">HOME</a></td>
       <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="country.html">INDIA</a></td>
       <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="world.html">WORLD</a></td>

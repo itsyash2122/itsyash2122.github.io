@@ -98,14 +98,11 @@ var infoWindow;
 }
 
 function display_area(data) {
- 
-    
-    var areahtml = "";
 
+    var areahtml = "";
         data.forEach(function(area, index){
         var namearea=area.Name;
         var confirmed=area.Confirmed;
-        
         var active=area.Active;
         var recovered=area.Recovered;
         var decreased=area.Decreased;
@@ -115,7 +112,7 @@ function display_area(data) {
     `<div class="area-container">
         <div class="area-info-container">
             <div class="area-name">
-                <span><a href="${p}">${namearea}</a></span>   
+                <span><a style="color:purple;" href="${p}">${namearea}</a></span>   
             </div>
             <div class="area-details">
                 <span ><b>Confirmed :</b><b> ${confirmed}</span>
