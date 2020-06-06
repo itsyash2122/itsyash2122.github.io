@@ -79,7 +79,7 @@ body {
 .area-list-container {
     width: 250px;
     background: rgb(98,80,115);
-background: linear-gradient(0deg, rgba(98,80,115,1) 47%, rgba(119,145,125,1) 100%);
+    background: linear-gradient(0deg, rgba(98,80,115,1) 47%, rgba(119,145,125,1) 100%);
 
     opacity: 1;
     position: absolute;
