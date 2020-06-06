@@ -1,6 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    height: 100vh;
+    height: auto;
     margin: 0;
     padding: 0;
     width:100%;
@@ -10,7 +10,7 @@ body {
 
 
 #map {
-    height: auto;
+    height: 100vh;
     widows: 100%;
 }
 
