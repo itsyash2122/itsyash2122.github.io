@@ -23,13 +23,14 @@ body {
     font-family:"Times New Roman", Times, serif;
 }
 .table{
-    margin-top: 170px;
+    margin-top: 150px;
     margin-left: 40px;
     font-family: "Times New Roman", Times, serif;
     width:600px;
     height: 400px;
     overflow-y: scroll;
     position:absolute;   
+    background-image: linear-gradient(to right,black,grey);
 }
 .internal-table{
     margin-top: 10px;
