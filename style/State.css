@@ -1,3 +1,5 @@
+
+
 body {
     
     font-family: Arial, Helvetica, sans-serif;
@@ -42,41 +44,41 @@ body {
 }
 .country-total-container{
     width: 450px;
-    height:100px;
+    height:80px;
     background-color: #373838;
     position: absolute;
     z-index: 30;
-    top: 145px;
+    top: 200px;
     left: 100px;
     border-radius: 15px;
 }
 .country-active-container{
     width: 450px;
-    height: 100px;
+    height: 80px;
     background-color: #373838;
     position: absolute;
     z-index: 30;
-    top: 255px;
+    top: 305px;
     left: 100px;
     border-radius: 15px;
 }
 .country-recovered-container{
     width: 450px;
-    height: 100px;
+    height: 80px;
     background-color: #373838;
     position: absolute;
     z-index: 30;
-    top: 365px;
+    top: 405px;
     left: 100px;
     border-radius: 15px;
 }
 .country-deaths-container{
     width: 450px;
-    height: 100px;
+    height: 80px;
     background-color: #373838;
     position: absolute;
     z-index: 30;
-    top: 475px;
+    top: 505px;
     left: 100px;
     border-radius: 15px;
 }
