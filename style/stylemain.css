@@ -10,7 +10,7 @@ body {
 
 
 #map {
-    height: 100vh;
+    height: auto;
     widows: 100%;
 }
 
