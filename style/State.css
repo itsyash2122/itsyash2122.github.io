@@ -87,3 +87,13 @@ body {
 .statemap{
     margin-left:0px;
 }
+
+.image{
+    margin-top: 150px;
+    margin-left: 700px;
+    font-family: "Times New Roman", Times, serif;
+    width:600px;
+    height: 400px;
+    
+    position:absolute;  
+}
