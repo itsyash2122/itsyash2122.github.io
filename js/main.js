@@ -143,17 +143,18 @@ function showAreaMarkers(data){
     var nameLoc=area.Name;
     var conf=area.Confirmed;
     var rec=area.Recovered;
+    var p=area.page;
     bounds.extend(latlng);
-    createMarker(latlng,nameLoc,conf,rec,index);
+    createMarker(latlng,nameLoc,conf,rec,index,p);
     
         });
         map.fitBounds(bounds);
 }
 
 
-function createMarker(latlng, name, Conf,rec, label1) {
-    var html = "<b>" + '<h2 style="color:#3498db;font-family:cursive">'
-    +name+'</h2>'+"Confirmed Cases : "
+function createMarker(latlng, name, Conf,rec, label1,p) {
+    var html = "<b>" + '<h2 style="color:#3498db;font-family:cursive"><a href="'+p+'">'
+    +name+'</a></h2>'+"Confirmed Cases : "
     +Conf +"<br>"+'<p style="color:green">'+"Recovered Cases:"+rec+"</p>";
     var marker = new google.maps.Marker({
       map: map,
