@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head><style> 
-      #Tripura :hover{
-        
-        position: absolute;
-        animation-name: example;
-        animation-iteration-count: 1;
-        animation-duration: 150ms;
-        
-        animation-timing-function: ease-in-out;
+<title>Tripura</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-      }
-      
-      @keyframes example {
-        0%   { left:0px; top:0px;}
-        100%  { left:10px; top:0px;}
-        
-      }
-      </style>
-        <title>Tripura</title>
-        <link rel="stylesheet" href="style/State.css">
-        <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1 {font-family: "Raleway", Arial, sans-serif;
+background-image: linear-gradient(#f5f7fa ,#c3cfe2);}
+h1 {letter-spacing: 6px}
+.w3-row-padding img {margin-bottom: 12px}
+</style>
+
+<script src="https://kit.fontawesome.com/c939d0e917.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    
     <script type="text/javascript" >
@@ -50,13 +44,14 @@
           var data = google.visualization.arrayToDataTable(andhra_data);
         console.log(data);
       var options = {
+        
         legend: 'none',
         pieSliceText: 'label',
         title: "Tripura",
         pieStartAngle: 100
       };
 
-        var chart = new google.visualization.PieChart(document.getElementById('Tripura'));
+        var chart = new google.visualization.PieChart(document.getElementById('Andhra'));
         chart.draw(data, options);
 
 
@@ -67,133 +62,188 @@
       }
     
     </script>
-       <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-       <script>
-         var dailyConf=[];
-             var dailyRec=[];
-             var dailyDeaths=[];
-       
-         window.onload = function () {
-           var y="https://api.covid19india.org/states_daily.json";
-       
-           $.getJSON(y,function(stateDailydata){
-             console.log(stateDailydata.states_daily[4].date);
-                   
-                   for (i=0;i<stateDailydata.states_daily.length-3;i=i+3){
-                         dailyConf.push({label: stateDailydata.states_daily[i].date,y: parseInt(stateDailydata.states_daily[i].tr)});
-                         dailyRec.push({label:stateDailydata.states_daily[i].date,y:parseInt(stateDailydata.states_daily[i+1].tr)});
-                         
-                         dailyDeaths.push({label:stateDailydata.states_daily[i].date,y:parseInt(stateDailydata.states_daily[i+2].tr)});
-                         
-                       }
-                       
-         var chart = new CanvasJS.Chart("chartContainer",
-          {
-           theme:"dark1",
-           animationEnabled: true,
-           title:{
-             text: "Daily Chart"
-           },
-           
-           axisY: {
-             title: "No. of cases",
-             includeZero: false,
-           },
-           legend:{
-             cursor: "pointer",
-             fontSize: 16,
-             itemclick: toggleDataSeries
-           },
-           toolTip:{
-             shared: true
-           },
-           data: [{
-             name: "Confirmed",
-             type: "spline",
-             yValueFormatString: "###",
-             showInLegend: true,
-             dataPoints: dailyConf
-           },
-           {
-             name: "Deaths",
-             type: "spline",
-             yValueFormatString: "###",
-             showInLegend: true,
-             dataPoints: dailyDeaths
-           },
-           {
-             name: "Recovered",
-             type: "spline",
-             yValueFormatString: "### ",
-             showInLegend: true,
-             dataPoints: dailyRec
-           }]
-         });
-         
-         chart.render();
-         
-         function toggleDataSeries(e){
-           if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-             e.dataSeries.visible = false;
-           }
-           else{
-             e.dataSeries.visible = true;
-           }
-           chart.render();
-         }
-       });
-         
-         }
-         </script>
-      <script>
-      
-        x="https://api.covid19india.org/v2/state_district_wise.json";
-        $.getJSON(x,function(stated){
-          var tableD="";
-         
-        stated.forEach(function(s, index){
-          if(s.state=="Tripura"){
-                for (j=0;j<s.districtData.length;j=j+1){
-        
-        tableD+=`<tr class="data-div" style="background: none;">
-                          <td style="color: rgb(255, 255, 255);"><div>&nbsp;</div>${s.districtData[j].district}</td>
-                          <td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>${s.districtData[j].confirmed}</span></td>
-                          <td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>${s.districtData[j].recovered}</span></td>
-                          <td style="color: rgb(255, 255, 255);"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>${s.districtData[j].deceased}</span></td>
-                          
-                        </tr>`}
-                      }
-                      });
-            
-                console.log(tableD);
-                document.querySelector('.tbody').innerHTML = tableD;
-        });
-      </script>
-      </head>
-    <body><div style="margin-top:2px; height:52px;">
-      <table style="margin-left: 60px;">
-      <tr style="font-size:20px;margin-top:6px;font-family:'Times New Roman', Times, serif;background-image: linear-gradient(to right,brown , yellow);" >
-      <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="main.html">HOME</a></td>
-      <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="country.html">INDIA</a></td>
-      <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="world.html">WORLD</a></td>
-      </tr></table></div>
-        
-            <div class="title">Tripura<br>
-              </div>
-            <div class="table">
-
-                <table class="internal-table"><thead><tr class="label-div"><th style="border-right-color: currentColor; border-right-width: medium; border-right-style: none; color:chocolate">DISTRICT</th><th style="color:chocolate">INFECTED<i class=" fa fa-arrow-up" style="transition:transform 0.2s ease-in-out; transform: none;"></i></th><th style="color:chocolate">RECOVERED</th><th style="color:chocolate">DEATHS</th></tr></thead><tbody class="tbody"></tbody></table></div>
-                <div class="image">
-                  <img src="https://www.mapsofindia.com/maps/tripura/tripura-index-map-20.jpg" width="300" height="450" style="margin-top:10px;margin-left:100px; border-color: black;border:2;"></img>
-            
-                </div>
-                <div id="chartContainer" style=" position:absolute;width: 570px; height: 350px; margin-top:600px;margin-left:700px;"></div> 
-        
-                <div id="Tripura" style="position:absolute;width: 550px; height: 350px;  margin-top:600px;margin-left:75px;"></div>
-
-
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+      var dailyConf=[];
+          var dailyRec=[];
+          var dailyDeaths=[];
     
-            
+      window.onload = function () {
+        var y="https://api.covid19india.org/states_daily.json";
+    
+        $.getJSON(y,function(stateDailydata){
+          
+                
+                for (i=0;i<stateDailydata.states_daily.length-3;i=i+3){
+                      dailyConf.push({label: stateDailydata.states_daily[i].date,y: parseInt(stateDailydata.states_daily[i].tr)});
+                      dailyRec.push({label:stateDailydata.states_daily[i].date,y:parseInt(stateDailydata.states_daily[i+1].tr)});
+                      
+                      dailyDeaths.push({label:stateDailydata.states_daily[i].date,y:parseInt(stateDailydata.states_daily[i+2].tr)});
+                      
+                    }
+                    
+      var chart = new CanvasJS.Chart("chartContainer",
+       {
+        theme:"light1",
+        animationEnabled: true, 
+		  animationDuration: 2500, 
+        title:{
+          fontSize:14,
+          text: "Daily Chart"
+        },
+        
+        axisY: {
+          title: "No. of cases",
+          includeZero: false,
+        },
+        legend:{
+          cursor: "pointer",
+          fontSize: 16,
+          itemclick: toggleDataSeries
+        },
+        toolTip:{
+          shared: true
+        },
+        data: [{
+          name: "Confirmed",
+          type: "spline",
+          yValueFormatString: "###",
+          showInLegend: true,
+          dataPoints: dailyConf,
+          color:"deepskyblue"
+          
+        },
+        {
+          name: "Deaths",
+          type: "spline",
+          yValueFormatString: "###",
+          showInLegend: true,
+          dataPoints: dailyDeaths,
+          color:"red"
+        },
+        {
+          name: "Recovered",
+          type: "spline",
+          yValueFormatString: "### ",
+          showInLegend: true,
+          dataPoints: dailyRec,
+          color:"green"
+        }]
+      });
+      
+      chart.render();
+      
+      function toggleDataSeries(e){
+        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+          e.dataSeries.visible = false;
+        }
+        else{
+          e.dataSeries.visible = true;
+        }
+        chart.render();
+      }
+    });
+      
+      }
+      </script>
 
-    </body>
+    <script>
+      
+      x="https://api.covid19india.org/v2/state_district_wise.json";
+      $.getJSON(x,function(stated){
+        var tableD="";
+       
+      stated.forEach(function(s, index){
+        if(s.state=="Tripura"){
+              for (j=0;j<s.districtData.length;j=j+1){
+      
+      tableD+=`<tr class="data-div" style="background: none;">
+                        <td style="color:crimson;"><div>&nbsp;</div>${s.districtData[j].district}:</td>
+                        <td style="color: deepskyblue;"><div> <i class="fa fa-arrow-up" style=" color: rgb(0, 181, 255); font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>${s.districtData[j].confirmed}</span></td>
+                        <td style="color: green;;"><div> <i class="fa fa-arrow-up" style="color: lightgreen; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>${s.districtData[j].recovered}</span></td>
+                        <td style="color: red;"><div> <i class="fa fa-arrow-up" style="color: red; font-size: 12px; font-weight: normal; visibility: hidden;">0</i></div><span>${s.districtData[j].deceased}</span></td>
+                        
+                      </tr>`}
+                    }
+                    });
+          
+              console.log(tableD);
+              document.querySelector('.tbody').innerHTML = tableD;
+      });
+    </script>
+    <style>
+    .table{
+    
+    margin-right: auto;
+    font-family: "Times New Roman", Times, serif;
+    max-width:500px;
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+    background-color: cornsilk;
+}
+.internal-table{
+    margin-left:auto;
+    margin-right: auto;
+    max-width:470px;
+    height:100px;
+    font-family: "Times New Roman", Times, serif; 
+    
+}
+</style>
+</head>
+
+
+
+<body>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+
+<!-- Header -->
+<header class="w3-panel w3-center w3-opacity" style="background-image: linear-gradient(#000d20,#020202 );">
+    <div style=" padding-top: 15px;padding-bottom: 15px;">
+        <div>
+          
+          <a href="main.html" class=" w3-button w3-light-grey"><b>Home<b></a>
+          <a href="country.html" class=" w3-button w3-light-grey"><b>India Updates<b></a>
+          <a href="world.html" class=" w3-button w3-light-grey"><b>World Updates<b></a>
+          </div>
+      </div>
+    
+</header>
+
+<h2 class=" w3-center" style="color: rgb(34, 34, 34); font-size:40px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;text-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);">Tripura</h2>
+  
+<!-- Photo Grid -->
+
+<div class="w3-row-padding w3-grayscale" style="margin-bottom:80px">
+  <div class="w3-half ">
+    <br>
+    <div id="chartContainer" style=" margin-left:auto;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 500px; height:270px"></div>
+    
+    
+  </div>
+  
+  <div class="w3-half">
+    <br>
+    <div id="Andhra"style="margin-right: auto;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 500px; height:270px;"></div>
+    <br>
+    <div class="table">
+      <table class="internal-table"><thead><tr class="label-div"><th style="  border-right-color: currentColor; border-right-width: medium; border-right-style: none; color:rgb(4, 39, 33)">DISTRICT</th><th style="color:rgb(4, 39, 33)">INFECTED</th><th style="color:rgb(4, 39, 33)">RECOVERED</th><th style="color:rgb(4, 39, 33)">DEATHS</th></tr></thead><tbody class="tbody"></tbody></table></div>
+      <br>
+  </div>
+</div>
+  
+<!-- End Page Content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container  w3-light-grey w3-center w3-large" style="padding-top:15px;padding-bottom: 15px;" > 
+  
+  <p>Developed by <a href="index.html" target="_blank" class="w3-hover-text-green">YASH GUPTA</a></p>
+</footer>
+
+</body>
 </html>

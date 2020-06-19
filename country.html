@@ -1,57 +1,75 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <meta name="viewport" content="width=device-width,initial scale=1">
+<title>India</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1 {font-family: "Raleway", Arial, sans-serif;
+background-image: linear-gradient(#f5f7fa ,#c3cfe2);}
+h1 {letter-spacing: 6px}
+.w3-row-padding img {margin-bottom: 12px}
+</style>
 
-        <title>Country Data live</title>
-        <link rel="stylesheet" href="style/State.css">
-        <link rel="stylesheet" href="https://www.w3school.com/lib/w3.css">
-        <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    
-    <script type="text/javascript" >
-        var andhra_data=[['State','Confirmed']];
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
+<script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    
+<script type="text/javascript" >
+var andhra_data=[['State','Confirmed']];
+google.charts.load("current", {packages:["corechart"]});
+google.charts.setOnLoadCallback(drawChart);
+
+
+function drawChart() {
+
+  var x='https://api.covid19india.org/data.json';
+  
+  $.getJSON(x,function(stated){
+    
+  for (i=1;i<stated.statewise.length;i=i+1){
+    
+      
+        andhra_data.push([stated.statewise[i].state,parseInt(stated.statewise[i].confirmed)
+        ]);
       
 
-      function drawChart() {
-        
-          var x='https://api.covid19india.org/data.json';
-          
-          $.getJSON(x,function(stated){
-            
-          for (i=1;i<stated.statewise.length;i=i+1){
-            
-              
-                andhra_data.push([stated.statewise[i].state,parseInt(stated.statewise[i].confirmed)
-                ]);
-              
+  }
 
-          }
+  var data = google.visualization.arrayToDataTable(andhra_data);
+console.log(data);
+var options = {
+legend: 'none',
+pieSliceText: 'label',
+title: "India",
+pieStartAngle: 100
+};
 
-          var data = google.visualization.arrayToDataTable(andhra_data);
-        console.log(data);
-      var options = {
-        legend: 'none',
-        pieSliceText: 'label',
-        title: "India",
-        pieStartAngle: 100
-      };
-
-        var chart = new google.visualization.PieChart(document.getElementById('cntry'));
-        chart.draw(data, options);
+var chart = new google.visualization.PieChart(document.getElementById('cntry'));
+chart.draw(data, options);
 
 
-        });
-        
+});
 
-        
-      }
+
+
+}
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
@@ -74,7 +92,7 @@
                 
   var chart = new CanvasJS.Chart("chartContainer",
    {
-    theme:"dark1",
+    theme:"light1",
     animationEnabled: true,
     title:{
       text: "India's Daily Chart"
@@ -130,66 +148,102 @@
   
   }
   </script>
-<script>
-var x='https://api.covid19india.org/data.json';
-var tc="";
-var ta="";
-var tr="";
-var td="";          
-$.getJSON(x,function(stated){
-  len=stated.cases_time_series.length;
-   tc=stated.cases_time_series[len-1].totalconfirmed;
-   
-   tr=stated.cases_time_series[len-1].totalrecovered;
-   td=stated.cases_time_series[len-1].totaldeceased; 
-   ta=tc-tr-td;
-    
+</head>
 
-});
+
+
+<body>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+
+<!-- Header -->
+<header class="w3-panel w3-center w3-opacity" style="background-image: linear-gradient(#000d20,#020202 );">
+    <div style=" padding-top: 15px;padding-bottom: 15px;">
+        <div>
+          
+          <a href="main.html" class=" w3-button w3-light-grey"><b>Home<b></a>
+          <a href="country.html" class=" w3-button w3-light-grey"><b>India Updates<b></a>
+          <a href="world.html" class=" w3-button w3-light-grey"><b>World Updates<b></a>
+          </div>
+      </div>
     
-</script>
-    </head>
-    <body><div style="margin-top:2px; height:52px;">
-      <table style="margin-left: 60px;">
-      <tr style="font-size:20px;margin-top:6px;font-family:'Times New Roman', Times, serif;background-image: linear-gradient(to right,brown , yellow);" >
-      
-      <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="main.html">HOME</a></td>
-      <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="country.html">INDIA</a></td>
-      <td style="width:100px;height:45px;border-radius: 5px;">&nbsp;&nbsp;&nbsp;<a href="world.html">WORLD</a></td>
-      </tr></table></div>
-        
-        <div class="title">INDIA's Data(Live)</div>
-            
-            
-        <div class="country-total-container">
-            <div class="country-total">
-            <h2 style="margin-left:80px ; margin-top:10px;font-family:'Times New Roman', Times, serif; color:whitesmoke ;">Total Confirmed</h2>
-            <h4 id="ct" style="margin-left:80px ; margin-top:1px;font-family: 'Times New Roman', Times, serif; color:blanchedalmond;">308,993</h4>
-        </div></div>
-        <div class="country-active-container">
-            <div id="ca" class="country-active">
-            <h2 style="margin-left:80px ; margin-top:3px;font-family:'Times New Roman', Times, serif; color: whitesmoke;">Total Active</h2>
-            <h4 id="ca" style="margin-left:80px ; margin-top:1px;font-family: 'Times New Roman', Times, serif; color:blanchedalmond;">145,779</h4>
-        </div></div>
-        <div class="country-recovered-container">
-            <div id="cr" class="country-recovered">
-            <h2 style="margin-left:80px ; margin-top:3px;font-family: 'Times New Roman', Times, serif; color:whitesmoke;">Total Recovered</h2>
-            <h4 id="cr" style="margin-left:80px ; margin-top:1px;font-family: 'Times New Roman', Times, serif; color:blanchedalmond;">154,330</h4>
-        </div></div>
-        <div class="country-deaths-container">
-            <div id="cd" class="country-deaths">
-            <h2 style="margin-left:80px ; margin-top:3px;font-family:'Times New Roman', Times, serif; color:whitesmoke;">Total Deaths</h2>
-            <h4 id="cd" style="margin-left:80px ; margin-top:1px;font-family:'Times New Roman', Times, serif; color:blanchedalmond;">8,884</h4>
-        </div>
-        </div>
-   
-    <div id="chartContainer" style=" width: 570px; height: 350px;margin-bottom: 10px;margin-top:170px;margin-left:700px;"></div> 
-    <div id="cntry" style="width: 570px; height: 350px;  margin-top:80px;margin-left:60px;"></div>
-    
-              
+</header>
+
+<h2 class=" w3-center" style="color: rgb(34, 34, 34); font-size:40px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;text-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);">INDIA(Bharat)</h2>
+  
+<!-- Photo Grid -->
+
+<div class="w3-row-padding w3-grayscale" style="margin-bottom:80px">
+  <div class="w3-half ">
+    <br>
+    <div style="margin-left: auto;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 500px; height:100px;">
+      <h2 class="w3-center">Total Confirmed</h2>
+      <h4 class="w3-center" style="font-family: 'Times New Roman', Times, serif; color:deepskyblue;">3,82,281</h4>
+  </div>
+  <br>
+  <div style="margin-left: auto;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 500px; height:100px;">
+    <h2 class="w3-center">Total Recovered</h2>
+    <h4 class="w3-center" style="font-family: 'Times New Roman', Times, serif; color:green;">2,05,744</h4>
+</div>
+<br>
+<div style="margin-left: auto;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 500px; height:100px;">
+  <h2 class="w3-center">Total Deaths</h2>
+  <h4 class="w3-center" style="font-family: 'Times New Roman', Times, serif; color:red;">12,616</h4>
+</div>
+<br>
+<div style="margin-left: auto;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 500px; height:100px;">
+  <h2 class="w3-center">Total Active</h2>
+  <h4 class="w3-center" style="font-family: 'Times New Roman', Times, serif; color:orange;">1,63,873</h4>
+</div>
+<br>
 
     
-             
+    
+  </div>
+  
+  <div class="w3-half">
+    <br>
+    <div id="cntry" style="margin-right: auto;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 500px; height:270px;"></div>
+    <br>
+    <div id="chartContainer" style=" margin-right:auto;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 500px; height:270px"></div>
+    <br>
+    
+  </div>
+</div>
+  
+<!-- End Page Content -->
+</div>
 
-    </body>
+<!-- Footer -->
+<footer class="w3-container  w3-light-grey w3-center w3-large" style="padding-top:15px;padding-bottom: 15px;" > 
+  
+  <p>Developed by <a href="index.html" target="_blank" class="w3-hover-text-green">YASH GUPTA</a></p>
+</footer>
+
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
