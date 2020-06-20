@@ -4,7 +4,10 @@ body {
     margin: 0;
     padding: 0;
     width:100%;
-  
+    background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
+background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover
 } 
 #map {
     height: 100vh;
@@ -75,6 +78,7 @@ body {
 }
 .area-list-container {
     width: 250px;
+
     background: rgb(98,80,115);
 background: linear-gradient(0deg, rgba(98,80,115,1) 47%, rgba(119,145,125,1) 100%);
 
