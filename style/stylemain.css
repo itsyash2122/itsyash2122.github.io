@@ -30,7 +30,10 @@ background-repeat: no-repeat;
 .search-container {
     width: 300px;
     height: 40px;
-    background-color: #454E53;
+    background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
+    background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
     position: absolute;
     z-index: 30;
     top: 220px;
@@ -79,8 +82,10 @@ background-repeat: no-repeat;
 .area-list-container {
     width: 250px;
 
-    background: rgb(98,80,115);
-background: linear-gradient(0deg, rgba(98,80,115,1) 47%, rgba(119,145,125,1) 100%);
+    background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
+    background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
 
     opacity: 1;
     position: absolute;
@@ -161,7 +166,10 @@ background: linear-gradient(0deg, rgba(98,80,115,1) 47%, rgba(119,145,125,1) 100
 
 .wrapper {
 
-    background-image: url(https://img.freepik.com/free-vector/dark-low-poly-background_1048-7971.jpg?size=626&ext=jpg);
+    background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
+background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 
@@ -176,7 +184,66 @@ background: linear-gradient(0deg, rgba(98,80,115,1) 47%, rgba(119,145,125,1) 100
     border-radius: 30px;
 }
 
-
+.homepage{
+    width: 70px;
+    height: 40px;
+    background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
+    background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    position: absolute;
+    z-index: 30;
+    top: 15px;
+    left: 450px;
+    padding-left: 15px;
+    padding-top: 15px;
+    border-radius: 5px;
+}
+.indiadata{
+    width: 120px;
+    height: 40px;
+    background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
+    background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    position: absolute;
+    z-index: 30;
+    top: 15px;
+    left: 540px;
+    padding-left: 15px;
+    padding-top: 15px;
+    border-radius: 5px;
+}
+.worlddata{
+    width: 120px;
+    height: 40px;
+    background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
+    background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    position: absolute;
+    z-index: 30;
+    top: 15px;
+    left: 680px;
+    padding-left: 15px;
+    padding-top: 15px;
+    border-radius: 5px;
+}
+.abtcovid{
+    width: 120px;
+    height: 40px;
+    background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
+    background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    position: absolute;
+    z-index: 30;
+    top: 15px;
+    left: 820px;
+    padding-left: 15px;
+    padding-top: 15px;
+    border-radius: 5px;
+}
 
 
 

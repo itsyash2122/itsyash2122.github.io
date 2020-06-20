@@ -115,7 +115,7 @@ function display_area(data) {
                 <span><a style="color:purple;" href="${p}">${namearea}</a></span>   
             </div>
             <div class="area-details">
-                <span ><b>Confirmed :</b><b> ${confirmed}</span>
+                <span style="color :black"><b>Confirmed :</b><b> ${confirmed}</span>
                 <span style="color :red"><b>Active :<b> ${active}</span>
                 <span style="color :green"><b >Recovered :<b> ${recovered}</span>
                 <span style="color :black"><b>Decreased :<b> ${decreased}</span>
