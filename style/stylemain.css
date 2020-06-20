@@ -11,7 +11,7 @@ background-repeat: no-repeat;
 } 
 #map {
     height: 100vh;
-    widows: 100%;
+    max-width:100%;
 }
 
 .title {
