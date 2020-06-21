@@ -23,7 +23,7 @@ background-repeat: no-repeat;
     z-index: 30;
     font-weight: bold;
     text-transform: uppercase;
-    color: wheat;
+    color: aqua;
     font-family: c"Times New Roman", Times, serif;
 }
 
@@ -56,7 +56,7 @@ background-repeat: no-repeat;
     font-size: 25px;
     border: none;
     background-color: transparent;
-    color: white;
+    color: black;
 }
 
 .search input:focus {
@@ -64,7 +64,7 @@ background-repeat: no-repeat;
 }
 
 .search i {
-    color: white;
+    color: black;
     font-size: 25px;
 }
 
@@ -77,7 +77,7 @@ background-repeat: no-repeat;
     z-index: 30;
     font-weight: bold;
     text-transform: uppercase;
-    color: wheat;
+    color: aqua;
 }
 .area-list-container {
     width: 250px;
@@ -186,7 +186,7 @@ background-repeat: no-repeat;
 
 .homepage{
     width: 70px;
-    height: 40px;
+    height: 35px;
     background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
     background-repeat: no-repeat;
         background-position: center;
@@ -198,10 +198,11 @@ background-repeat: no-repeat;
     padding-left: 15px;
     padding-top: 15px;
     border-radius: 5px;
+    
 }
 .indiadata{
     width: 120px;
-    height: 40px;
+    height: 35px;
     background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
     background-repeat: no-repeat;
         background-position: center;
@@ -213,10 +214,11 @@ background-repeat: no-repeat;
     padding-left: 15px;
     padding-top: 15px;
     border-radius: 5px;
+    
 }
 .worlddata{
     width: 120px;
-    height: 40px;
+    height: 35px;
     background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
     background-repeat: no-repeat;
         background-position: center;
@@ -228,10 +230,11 @@ background-repeat: no-repeat;
     padding-left: 15px;
     padding-top: 15px;
     border-radius: 5px;
+   
 }
 .abtcovid{
     width: 120px;
-    height: 40px;
+    height: 35px;
     background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
     background-repeat: no-repeat;
         background-position: center;
@@ -243,6 +246,7 @@ background-repeat: no-repeat;
     padding-left: 15px;
     padding-top: 15px;
     border-radius: 5px;
+    
 }
 
 
