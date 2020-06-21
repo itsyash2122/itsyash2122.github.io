@@ -9,7 +9,7 @@ var infoWindow;
     map = new google.maps.Map(document.getElementById('map'), {
         center: india,
         zoom: 8,
-      style:[
+      styles:[
         {
           "elementType": "geometry",
           "stylers": [
