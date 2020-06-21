@@ -16,7 +16,7 @@ background-repeat: no-repeat;
 }h1 {letter-spacing: 6px}
 .w3-row-padding img {margin-bottom: 12px}
 </style>
-
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -41,6 +41,43 @@ background-repeat: no-repeat;
 
     });
 </script>
+
+
+<script>
+  window.onload = function () {
+    var y="https://api.covid19api.com/summary";
+    var dailyConf=[];
+    $.getJSON(y,function(c){
+            
+            for (i=0;i<c.Countries.length;i=i+1){
+                  dailyConf.push({label: c.Countries[i].Country,y: parseInt(c.Countries[i].TotalConfirmed)});
+                }
+  console.log(dailyConf);
+  var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    theme: "light2", // "light1", "light2", "dark1", "dark2"
+    title: {
+      text: "Countries"
+    },
+    
+    axisY: {
+      scaleBreaks: {
+        customBreaks: [{
+          startValue: 0
+        }]
+      }
+    },
+    data: [{
+      type: "column",
+      yValueFormatString: "########",
+      dataPoints: dailyConf
+    }]
+  });
+  chart.render();
+  
+  });
+  }
+  </script>
 
 
 
@@ -105,6 +142,9 @@ background-repeat: no-repeat;
   </div>
   
   <div class="w3-half">
+    <br>
+    <h3 style="color:crimson;margin-left: auto; border-radius:10px;">Bar Graph of Countrie's Data</h3>
+    <div id="chartContainer" style="margin-right: auto;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 500px; height:270px;"></div>
     
     
   </div>
