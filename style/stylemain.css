@@ -249,5 +249,18 @@ background-repeat: no-repeat;
     
 }
 
-
+.m{
+    width: 100%;
+    height: 20px;
+    background-image:url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
+    background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    position: absolute;
+    z-index: 30;
+    top: 70px;
+    padding-left: 15px;
+    
+    border-radius: 5px;
+}
 
