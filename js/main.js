@@ -38,7 +38,7 @@ function display_area(data) {
                 <span style="color :black"><b>Confirmed :</b><b> ${confirmed}</span>
                 <span style="color :red"><b>Active :<b> ${active}</span>
                 <span style="color :green"><b >Recovered :<b> ${recovered}</span>
-                <span style="color :black"><b>Decreased :<b> ${decreased}</span>
+                <span style="color :black"><b>Deceased :<b> ${decreased}</span>
                         </div>
         </div>
         <div class="area-number-container">
