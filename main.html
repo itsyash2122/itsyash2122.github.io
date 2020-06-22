@@ -16,9 +16,26 @@
 
 </script>
 <script>
-    var x='https://api.covid19india.org/data.json';
-  
+
+    var z='https://api.covid19india.org/data.json';
+    var foundArea=[];
+    var stateN = document.getElementById('stateNameid').value;
+    if(stateN){
+
+        $.getJSON(z,function(area){
+            for (i=1;i<area.statewise.length;i=i+1){
+      var x=area.statewise[i].state;
+      var y=area.statewise[i].state.toLowerCase();
+      if((x==stateN)||(x.substring(0,1)==stateN)||(x.substring(0,2)==stateN)||(x.substring(0,3)==stateN)||(x.substring(0,4)==stateN)||
+      (y==stateN)||(y.substring(0,1)==stateN)||(y.substring(0,2)==stateN)||(y.substring(0,3)==stateN)||(y.substring(0,4)==stateN)){
+          foundArea.push(area);
+        }}
+    
+    });
+  }
+  x=z;
   $.getJSON(x,function(area){
+      
     var areahtml="";
     var namearea="";
     var confirmed="";
