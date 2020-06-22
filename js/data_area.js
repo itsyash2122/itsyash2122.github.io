@@ -70,7 +70,7 @@ let data=
     "page":"Chhattisgarh.html"
 },
 
-{ "Name":"Dadra and Nagar Haveli",
+{ "Name":"Dadra and Nagar Haveli and Daman and Diu",
     "Confirmed" :88,
     "Active" :62,
     "Recovered" :26,
