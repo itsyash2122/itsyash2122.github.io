@@ -38,7 +38,7 @@ function display_area(data) {
                 <span style="color :black"><b>Confirmed :</b><b> ${confirmed}</span>
                 <span style="color :red"><b>Active :<b> ${active}</span>
                 <span style="color :green"><b >Recovered :<b> ${recovered}</span>
-                <span style="color :black"><b>Deceased :<b> ${decreased}</span>
+                <span style="color :black"><b>Decreased :<b> ${decreased}</span>
                         </div>
         </div>
         <div class="area-number-container">
@@ -76,13 +76,11 @@ function createMarker(latlng, name, Conf,rec, label1,p) {
     var html = "<b>" + '<h2 style="color:#3498db;font-family:cursive"><a href="'+p+'">'
     +name+'</a></h2>'+"Confirmed Cases : "
     +Conf +"<br>"+'<p style="color:green">'+"Recovered Cases:"+rec+"</p>";
-    var iconbase="https://image.flaticon.com/icons/png/512/2913/";
     var marker = new google.maps.Marker({
       map: map,
       position: latlng,
-      label: `${label1 +1}`,
-      icon: iconbase+'2913604.png'
-        });
+      label: `${label1 +1}`
+    });
       google.maps.event.addListener(marker, 'mouseover', function() {
       infoWindow.setContent(html);
       infoWindow.open(map, marker);
