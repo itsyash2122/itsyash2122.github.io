@@ -30,14 +30,14 @@ function showAreaMarkers(data){
     
     var p=area.page;
     bounds.extend(latlng);
-    createMarker(latlng,nameLoc,index,p);
+    createMarker(latlng,nameLoc,p);
     
         });
         map.fitBounds(bounds);
 }
 
 
-function createMarker(latlng, name, label1,p) {
+function createMarker(latlng, name,p) {
     var html = "<b>" + '<h2 style="color:#3498db;font-family:cursive"><a href="'+p+'">'
     +name+'</a></h2>';
     var marker = new google.maps.Marker({
