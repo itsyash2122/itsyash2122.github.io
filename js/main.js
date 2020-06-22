@@ -43,7 +43,7 @@ function createMarker(latlng, name, label1,p) {
     var marker = new google.maps.Marker({
       map: map,
       position: latlng,
-      label: `${label1 +1}`
+      
     });
       google.maps.event.addListener(marker, 'mouseover', function() {
       infoWindow.setContent(html);
