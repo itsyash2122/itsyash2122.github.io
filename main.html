@@ -16,27 +16,10 @@
 
 </script>
 <script>
-
-    var z='https://api.covid19india.org/data.json';
-    var foundArea=[];
-    var stateN = document.getElementById('stateNameid').value;
+    var x='https://api.covid19india.org/data.json';
     
-
-        $.getJSON(z,function(area){
-            if(stateN){
-            for (i=1;i<area.statewise.length;i=i+1){
-      var x=area.statewise[i].state;
-      var y=area.statewise[i].state.toLowerCase();
-      if((x==stateN)||(x.substring(0,1)==stateN)||(x.substring(0,2)==stateN)||(x.substring(0,3)==stateN)||(x.substring(0,4)==stateN)||
-      (y==stateN)||(y.substring(0,1)==stateN)||(y.substring(0,2)==stateN)||(y.substring(0,3)==stateN)||(y.substring(0,4)==stateN)){
-          foundArea.push(area.statewise[i]);
-        }}}
-    else {for (i=1;i<area.statewise.length;i=i+1){
-     foundArea.push(area.statewise[i]);   
-    }
-    }
-    
-    
+  
+  $.getJSON(x,function(area){
       
     var areahtml="";
     var namearea="";
@@ -45,15 +28,15 @@
     var recovered="";
     var decreased="";
     var p="";
-    for (i=1;i<foundArea.length;i=i+1){
-        namearea=foundArea[i].state;
+    for (i=1;i<area.statewise.length;i=i+1){
+        namearea=area.statewise[i].state;
         if (namearea=="State Unassigned"){
             continue;
         }
-        confirmed=foundArea[i].confirmed;
-        active=foundArea[i].active;
-        recovered=foundArea[i].recovered;
-        decreased=foundArea[i].deaths;
+        confirmed=area.statewise[i].confirmed;
+        active=area.statewise[i].active;
+        recovered=area.statewise[i].recovered;
+        decreased=area.statewise[i].deaths;
         for (j=0;j<data.length;j=j+1){
             if(data[j].Name==namearea){
                 p=data[j].page;
