@@ -79,7 +79,8 @@ function createMarker(latlng, name, Conf,rec, label1,p) {
     var marker = new google.maps.Marker({
       map: map,
       position: latlng,
-      label: `${label1 +1}`
+      label: `${label1 +1}`,
+      icon: 'https://image.flaticon.com/icons/png/512/2913/2913604.png'
     });
       google.maps.event.addListener(marker, 'mouseover', function() {
       infoWindow.setContent(html);
