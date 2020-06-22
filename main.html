@@ -29,7 +29,7 @@
     var p="";
     for (i=1;i<area.statewise.length;i=i+1){
         namearea=area.statewise[i].state;
-        if (namearea=="State Unassigned"){
+        if (namearea=="State Unassigned" || namearea=="Lakshadweep"){
             continue;
         }
         confirmed=area.statewise[i].confirmed;
