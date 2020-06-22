@@ -76,12 +76,13 @@ function createMarker(latlng, name, Conf,rec, label1,p) {
     var html = "<b>" + '<h2 style="color:#3498db;font-family:cursive"><a href="'+p+'">'
     +name+'</a></h2>'+"Confirmed Cases : "
     +Conf +"<br>"+'<p style="color:green">'+"Recovered Cases:"+rec+"</p>";
+    var iconbase="https://image.flaticon.com/icons/png/512/2913/";
     var marker = new google.maps.Marker({
       map: map,
       position: latlng,
       label: `${label1 +1}`,
-      icon: 'https://image.flaticon.com/icons/png/512/2913/2913604.png'
-    });
+      icon: iconbase+'2913604.png'
+        });
       google.maps.event.addListener(marker, 'mouseover', function() {
       infoWindow.setContent(html);
       infoWindow.open(map, marker);
