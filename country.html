@@ -62,40 +62,6 @@ chart.draw(data, options);
 }
 </script>
 
-<script>
-  y="https://api.covid19api.com/summary";
-  $.getJSON(y,function(s){
-    var tc=0;
-    var ta=0;
-    var tr=0;
-    var td=0;
-
-for(i=0;i<s.Countries.length;i=i+1){
-if(s.Countries[i].Country=="India"){
-  tc=s.Countries[i].TotalConfirmed;
-  tr=s.Countries[i].TotalRecovered;
-  td=s.Countries[i].TotalDeaths;
-  ta=tc-tr-td;
-}}
-  document.querySelector('.tc').innerHTML = tc;
-  document.querySelector('.ta').innerHTML = ta;
-  document.querySelector('.tr').innerHTML = tr;
-  document.querySelector('.td').innerHTML = td;
-  
-
-
-  });
-</script>
-
-
-
-
-
-
-
-
-
-
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>

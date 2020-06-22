@@ -17,41 +17,7 @@ var infoWindow;
     
 }
 
-function display_area(data) {
 
-    var areahtml = "";
-        data.forEach(function(area, index){
-        var namearea=area.Name;
-        var confirmed=area.Confirmed;
-        var active=area.Active;
-        var recovered=area.Recovered;
-        var decreased=area.Decreased;
-        var p=area.page;
-
-    areahtml +=
-    `<div class="area-container">
-        <div class="area-info-container">
-            <div class="area-name">
-                <span><a style="color:purple;" href="${p}">${namearea}</a></span>   
-            </div>
-            <div class="area-details">
-                <span style="color :black"><b>Confirmed :</b><b> ${confirmed}</span>
-                <span style="color :red"><b>Active :<b> ${active}</span>
-                <span style="color :green"><b >Recovered :<b> ${recovered}</span>
-                <span style="color :black"><b>Decreased :<b> ${decreased}</span>
-                        </div>
-        </div>
-        <div class="area-number-container">
-            <div class="area-number">
-                ${index+1}
-            </div>
-        </div>
-    </div>
-    `
-    });
-    document.querySelector('.area-list').innerHTML= areahtml;
-
-}
 
 function showAreaMarkers(data){
     var bounds = new google.maps.LatLngBounds();
@@ -61,21 +27,19 @@ function showAreaMarkers(data){
             area.long);
             console.log(latlng);
     var nameLoc=area.Name;
-    var conf=area.Confirmed;
-    var rec=area.Recovered;
+    
     var p=area.page;
     bounds.extend(latlng);
-    createMarker(latlng,nameLoc,conf,rec,index,p);
+    createMarker(latlng,nameLoc,index,p);
     
         });
         map.fitBounds(bounds);
 }
 
 
-function createMarker(latlng, name, Conf,rec, label1,p) {
+function createMarker(latlng, name, label1,p) {
     var html = "<b>" + '<h2 style="color:#3498db;font-family:cursive"><a href="'+p+'">'
-    +name+'</a></h2>'+"Confirmed Cases : "
-    +Conf +"<br>"+'<p style="color:green">'+"Recovered Cases:"+rec+"</p>";
+    +name+'</a></h2>';
     var marker = new google.maps.Marker({
       map: map,
       position: latlng,
@@ -89,16 +53,7 @@ function createMarker(latlng, name, Conf,rec, label1,p) {
     markerlist.push(marker);
   }
 
-  function setOnClickListner(){
-    console.log(markerlist);
-    var areaElements = document.querySelectorAll('.area-container');
-    areaElements.forEach(function(elem, index){
-      elem.addEventListener('mouseover', function(){
-        google.maps.event.trigger(markerlist[index], 'mouseover');
-      })
-    }); 
-
-  }
+  
 
   function searchArea(){
     var foundArea=[];
@@ -119,7 +74,7 @@ function createMarker(latlng, name, Conf,rec, label1,p) {
         foundArea=data;
   }
     clearLocations();
-    display_area(foundArea);
+    
     showAreaMarkers(foundArea);
     setOnClickListner();
   }

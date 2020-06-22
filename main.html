@@ -7,15 +7,71 @@
         <script src="js/data_area.js"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170194527-2"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'UA-170194527-2');
 
 </script>
+<script>
+    var x='https://api.covid19india.org/data.json';
+  
+  $.getJSON(x,function(area,index){
+    var areahtml="";
+    var namearea="";
+    var confirmed="";
+    var active="";
+    var recovered="";
+    var decreased="";
+    var p="";
+    for (i=1;i<area.statewise.length;i=i+1){
+        namearea=area.statewise[i].state;
+        if (namearea=="State Unassigned"){
+            continue;
+        }
+        confirmed=area.statewise[i].confirmed;
+        active=area.statewise[i].active;
+        recovered=area.statewise[i].recovered;
+        decreased=area.statewise[i].deaths;
+        for (j=0;j<data.length;j=j+1){
+            if(data[j].Name==namearea){
+                p=data[j].page;
+            }
+           
 
+        }
+        
+    areahtml +=
+    `<div class="area-container">
+        <div class="area-info-container">
+            <div class="area-name">
+                <span><a style="color:purple;" href="${p}">${namearea}</a></span>   
+            </div>
+            <div class="area-details">
+                <span style="color :black"><b>Confirmed :</b><b> ${confirmed}</span>
+                <span style="color :red"><b>Active :<b> ${active}</span>
+                <span style="color :green"><b >Recovered :<b> ${recovered}</span>
+                <span style="color :black"><b>Decreased :<b> ${decreased}</span>
+                        </div>
+        </div>
+        <div class="area-number-container">
+            <div class="area-number">
+                ${index+1}
+            </div>
+        </div>
+    </div>
+    `
+    console.log(active);
+        console.log(p);
+
+    }
+    document.querySelector('.area-list').innerHTML= areahtml;
+});
+    
+    
+</script>
         </head>
     <body>
         
