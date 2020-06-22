@@ -57,7 +57,7 @@ function createMarker(latlng, name,p) {
 
   function searchArea(){
     var foundArea=[];
-    var stateN = document.getElementById('stateNameid');
+    var stateN = document.getElementById('stateNameid').value;
     if(stateN){
 
     data.forEach(function(area){
