@@ -76,7 +76,7 @@ function createMarker(latlng, name,p) {
     clearLocations();
     
     showAreaMarkers(foundArea);
-    setOnClickListner();
+    
   }
 
 
