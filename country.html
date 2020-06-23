@@ -63,20 +63,17 @@ chart.draw(data, options);
 </script>
 
 <script>
-  y="https://api.covid19api.com/summary";
+  y="https://api.covid19india.org/data.json";
   $.getJSON(y,function(s){
     var tc=0;
     var ta=0;
     var tr=0;
     var td=0;
 
-for(i=0;i<s.Countries.length;i=i+1){
-if(s.Countries[i].Country=="India"){
-  tc=s.Countries[i].TotalConfirmed;
-  tr=s.Countries[i].TotalRecovered;
-  td=s.Countries[i].TotalDeaths;
+  tc=s.statewise[0].confirmed;
+  tr=s.statewise[0].recovered;
+  td=s.statewise[0].deaths;
   ta=tc-tr-td;
-}}
   document.querySelector('.tc').innerHTML = tc;
   document.querySelector('.ta').innerHTML = ta;
   document.querySelector('.tr').innerHTML = tr;
@@ -208,22 +205,26 @@ if(s.Countries[i].Country=="India"){
     
     <div style="margin-left: auto; border-radius:10px;  background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 400px; height:100px;">
       <h2 class="w3-center" style="padding-top: 2px;">Total Confirmed</h2>
-      <h4 class="w3-center tc" style="font-family: 'Times New Roman', Times, serif; color:deepskyblue;">3,96,664</h4>
+      <h4 class="w3-center tc" style="font-family: 'Times New Roman', Times, serif; color:deepskyblue;"></h4>
   </div>
   <br>
   <div style="margin-left: auto; border-radius:10px;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 400px; height:100px;">
     <h2 class="w3-center" style="padding-top: 2px;">Total Recovered</h2>
-    <h4 class="w3-center tr" style="font-family: 'Times New Roman', Times, serif; color:green;">2,14,346</h4>
+    <h4 class="w3-center tr" style="font-family: 'Times New Roman', Times, serif; color:green;"></h4>
 </div>
 <br>
 <div style="margin-left: auto; border-radius:10px;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 400px; height:100px;">
   <h2 class="w3-center"style="padding-top: 2px;" >Total Deaths</h2>
-  <h4 class="w3-center td" style="font-family: 'Times New Roman', Times, serif; color:red;">12,972</h4>
+  <h4 class="w3-center td" style="font-family: 'Times New Roman', Times, serif; color:red;"></h4>
 </div>
 <br>
 <div style="margin-left: auto; border-radius:10px;background: rgb(252, 252, 252); color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 400px; height:100px;">
   <h2 class="w3-center" style="padding-top: 2px;">Total Active</h2>
-  <h4 class="w3-center ta" style="font-family: 'Times New Roman', Times, serif; color:orange;">1,69,296</h4>
+  <h4 class="w3-center ta" style="font-family: 'Times New Roman', Times, serif; color:orange;"></h4>
+</div>
+<br>
+<div style="margin-left: auto; border-radius:10px;background: transparent; color: rgb(34, 34, 34); box-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);max-width: 400px; height:350px;">
+<img  class="w3-center"style=" border-radius:10px;"width="400px" height="350px" src="https://media1.tenor.com/images/f841ec1fac4b581baf2dde568f231f68/tenor.gif?itemid=16678450"></img>
 </div>
 <br>
 
