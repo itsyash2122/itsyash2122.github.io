@@ -49,6 +49,10 @@ background-repeat: no-repeat;
     padding-left: 20px;
     padding-right: 20px;
 }
+<div style=" margin-left:auto;background: transparent; color: rgb(34, 34, 34);max-width: 370px; height:300px;">
+  <img class="w3-center"  style=" border-radius:10px;"max-width="300px" height="300px" src="https://media1.tenor.com/images/f841ec1fac4b581baf2dde568f231f68/tenor.gif?itemid=16678450"></img>
+  </div>
+  <br>
 
 .search input {
     font-family: c"Times New Roman", Times, serif;
