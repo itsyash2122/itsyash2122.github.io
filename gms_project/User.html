@@ -145,7 +145,7 @@
         <script>
             function loading(){
             var x= localStorage.getItem("name");
-            document.getElementById("user_name").value = x;
+            document.getElementById("user_name").innerHTML = x;
             };
         </script>
     </head>
@@ -161,16 +161,17 @@
                 <a href="#bookinglist">Bookings</a>
                 <a href="#settings">Settings</a>
                 <a href="#about">About</a>
+                <a href="main.html">Logout</a>
               </div>
               <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
               </a>
             </div>
-            
+            <center>
             <div style="padding-left:16px">
 
-              <p>Welcome!!!</p>
-              <center>
+              <p>Welcome <label id="user_name"></label> !!!</p>
+              
               <div class="button-container">
 
                 <button onclick="document.getElementById('BGtruck').style.display='block'" style="width:150px;">Book Garbage Truck</button>
@@ -204,9 +205,7 @@
                       <button style="width:150px; " type="submit"  onclick="search()">Search Drivers</button>
                       <script>
                         function search(){
-                          var x = parseString(document.getElementById("myText").value);
-                          localStorage.setItem("name",x);
-                          }
+                          };
                         </script>
                         <br><br>
                         <label for="DrID"><b>Available Driver's ID: </b></label>
@@ -218,7 +217,7 @@
                 
                 
             
-            <br><br>
+            <br>
 
 
             <button onclick="document.getElementById('VWreport').style.display='block'" style="width:150px;">View Work Report</button>
@@ -244,16 +243,49 @@
                 
                     
                   </form>
-                </div>
+                
                 
                 
             
             <br><br>
             
+            <button onclick="document.getElementById('Comp').style.display='block'" style="width:150px;">View Work Report</button>
             
+                <div id="Comp" class="modal">
+                  
+                  <form style="color:black;" class="modal-content animate" action="#" method="post">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('Comp').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        
+                      </div>
+
+                      <h2>Complaints List</h2>
+                      <label for="comp1"><b>Complaint 1:</b></label>
+                      <br><br><br><br><br>
+                      <label for="comp2"><b>Complaint 2:</b></label>
+                      <br><br><br><br><br>
+                      <label for="comp3"><b>Complaint 3:</b></label>
+                      <br><br><br><br><br>
+                      <label for="comp4"><b>Complaint 4:</b></label>
+                      <br><br><br><br><br>
+                    </div>
+                
+                    
+                  </form>
+                </div>
+                
+                
+              </center>
         
+
+
+
+
+
+
+
             </div>
-            </center>
+           
             
             
             </div>

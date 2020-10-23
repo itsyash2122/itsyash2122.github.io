@@ -185,7 +185,7 @@
           <h1>Login</h1>
           </center>
           <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
+          <input id="input_user_name" type="text" placeholder="Enter Username" name="uname" required>
     
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" required>
@@ -195,7 +195,7 @@
           <button type="submit"  onclick="setValues()" >Login</button>
           <script>
             function setValues(){
-              var x = parseString(document.getElementById("myText").value);
+              var x = String(document.getElementById("input_user_name").value);
               localStorage.setItem("name",x);
               }
             </script>
