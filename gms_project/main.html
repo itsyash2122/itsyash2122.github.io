@@ -5,12 +5,13 @@
 <link rel="stylesheet" href="CSS/main.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-    body {font-family: Arial, Helvetica, sans-serif;}
+    body {font-family: Arial, Helvetica, sans-serif;
+    color:black;
+    background-image: url('https://i.pinimg.com/564x/4b/cf/28/4bcf28dc79b8644df834783cef95e8cf.jpg');
+    
+    }
     * {box-sizing: border-box;}
 
-    .imgcontainer{
-        margin-left: 60px;
-    }
     
     /* Full-width input fields */
     input[type=text], input[type=password] {
@@ -31,6 +32,11 @@
     input[type=text]:focus, input[type=password]:focus {
       background-color: #ddd;
       outline: none;
+    }
+
+    form
+    {
+        border-radius: 9px;
     }
     
     /* Set a style for all buttons */
@@ -118,6 +124,16 @@
       display: table;
     }
 
+    .mobile-container{
+      background-image: url('https://images.pexels.com/photos/3117225/pexels-photo-3117225.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 1x, https://images.pexels.com/photos/3117225/pexels-photo-3117225.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 2x');
+    
+    }
+
+    .modal{
+      background-image: url('https://images.pexels.com/photos/3117225/pexels-photo-3117225.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 1x, https://images.pexels.com/photos/3117225/pexels-photo-3117225.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 2x');
+    
+    }
+
     
     /* Change styles for cancel button and signup button on extra small screens */
     @media screen and (max-width: 300px) {
@@ -157,22 +173,33 @@
 
     <div id="id02" class="modal">
       
-      <form class="modal-content animate" action="/action_page.php" method="post">
-        
+      <form style="color:wheat;" class="modal-content animate" action="User.html" method="post">
+        <center>
         <div class="imgcontainer">
           <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
           <img src="Images/images.png" alt="Avatar" class="avatar">
         </div>
-        
+        </center>
         <div class="container">
-            <h1>Login</h1>
+          <center>  
+          <h1>Login</h1>
+          </center>
           <label for="uname"><b>Username</b></label>
           <input type="text" placeholder="Enter Username" name="uname" required>
     
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" required>
             
-          <button type="submit">Login</button>
+          
+
+          <button type="submit"  onclick="setValues()" >Login</button>
+          <script>
+            function setValues(){
+              var x = parseString(document.getElementById("myText").value);
+              localStorage.setItem("name",x);
+              }
+            </script>
+
           <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
           </label>
@@ -198,12 +225,30 @@
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form class="modal-content" action="/action_page.php">
     <div class="container">
+      <center>
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
+      </center>
       <hr>
+      
+      <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="Enter name" name="name" required>
+
+
+      <label for="mob"><b>Mobile Number</b></label>
+      <input type="text" placeholder="Enter Mobile Number" name="mob" required>
+
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
 
+      <label for="psw"><b>User Type</b></label>
+          <select name="user-type" id="utype">
+            <option value="Admin">Admin</option>
+            <option value="Public">Public</option>
+            <option value="Tdriver">Truck Driver</option>
+            <option value="Towner">Truck Owner</option>
+          </select>
+      <br><br>
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
 
