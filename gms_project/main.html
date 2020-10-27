@@ -151,8 +151,8 @@
   <a href="main.html" class="active">HOME</a>
   <div id="myLinks">
     <a href="#news">Option1</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
+    <a href="Contact.html">Contact us</a>
+    <a href="About.html">About</a>
   </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
@@ -187,7 +187,15 @@
     
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" required>
-            
+          
+          <label for="psw"><b>User Type</b></label>
+          <select name="user-type" id="utype">
+            <option value="Admin">Admin</option>
+            <option value="Public">Public</option>
+            <option value="Tdriver">Truck Driver</option>
+            <option value="Towner">Truck Owner</option>
+          </select>
+      <br><br>
           
 
           <button type="submit"  onclick="setValues()" >Login</button>
