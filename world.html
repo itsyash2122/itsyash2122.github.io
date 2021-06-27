@@ -20,16 +20,18 @@ background-repeat: no-repeat;
 <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+
+
 <script>
-    y="https://api.thevirustracker.com/free-api?global=stats";
+    y="https://api.covid19api.com/summary";
     $.getJSON(y,function(s){
       var tc=0;
       var ta=0;
       var tr=0;
       var td=0;
-    tc=s.results[0].total_cases;
-    tr=s.results[0].total_recovered;
-    td=s.results[0].total_deaths;
+    tc=s.Global.TotalConfirmed;
+    tr=s.Global.TotalRecovered;
+    td=s.Global.TotalDeaths;
     ta=tc-tr-td;
 
     document.querySelector('.tc').innerHTML = tc;
@@ -37,12 +39,10 @@ background-repeat: no-repeat;
     document.querySelector('.tr').innerHTML = tr;
     document.querySelector('.td').innerHTML = td;
     
-
-
     });
 </script>
 
-
+    
 <script>
   window.onload = function () {
     var y="https://api.covid19api.com/summary";
