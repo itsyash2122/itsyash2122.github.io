@@ -26,47 +26,64 @@
         .w3-row-padding img {
             margin-bottom: 12px
         }
+
+
+        table,
+        th,
+        td {text-align: center;
+            padding: auto;
+            margin: 10px;
+            border: 0.5px solid black;
+            border-collapse: collapse;
+        }
     </style>
 
     <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 
 
-    <script type = "text/javascript" language="javascript">
+    <script type="text/javascript" language="javascript">
 
 
-    $(document).on("click","#getR",function(){
-        pin_code=document.getElementById("pin").value;
-        $.ajax({type:"get",
-            url:"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode="+pin_code+"&date=30-06-2021",
-        success: function(api){
-            var x="Hello mr.";
-            var cowinhtml = "";
-            var center_id = "";
-            var name = "";
-            var district_name = "";
-            var from = "";
-            var to = "";
-            var available_cap = "";
-            var dose1 = "";
-            var dose2 = "";
-            var vaccine = "";
-            console.log(x);
-            for (i = 0; i < api.sessions.length; i = i + 1) {
-                center_id = api.sessions[i].center_id;
-                name = api.sessions[i].name;
-                district_name = api.sessions[i].district_name;
-                from = api.sessions[i].from;
-                to = api.sessions[i].to;
-                available_cap = api.sessions[i].available_capacity;
-                dose1 = api.sessions[i].available_capacity_dose1;
-                dose2 = api.sessions[i].available_capacity_dose2;
-                vaccine = api.sessions[i].vaccine;
-                cowinhtml +=
-                    `<tr>
+        $(document).on("click", "#getR", function () {
+            pin_code = document.getElementById("pin").value;
+            $.ajax({
+                type: "get",
+                url: "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pin_code + "&date=30-06-2021",
+                success: function (api) {
+                    var x = "Hello mr.";
+                    var cowinhtml = "";
+                    var center_id = "";
+                    var name = "";
+                    var district_name = "";
+                    var from = "";
+                    var to = "";
+                    var available_cap = "";
+                    var dose1 = "";
+                    var dose2 = "";
+                    var vaccine = "";
+                    var slots=[];
+                    for (i = 0; i < api.sessions.length; i = i + 1) {
+                        center_id = api.sessions[i].center_id;
+                        name = api.sessions[i].name;
+                        district_name = api.sessions[i].district_name;
+                        from = api.sessions[i].from;
+                        to = api.sessions[i].to;
+                        available_cap = api.sessions[i].available_capacity;
+                        if(available_cap==0){
+                            continue;
+                        }
+                        dose1 = api.sessions[i].available_capacity_dose1;
+                        dose2 = api.sessions[i].available_capacity_dose2;
+                        vaccine = api.sessions[i].vaccine;
+                        slots=api.sessions[i].slots;
+                        cowinhtml +=
+                            `<tr>
         <td>${center_id}</td>
         <td>${name}</td>
         <td>${district_name}</td>
@@ -76,16 +93,19 @@
         <td>${dose1}</td>
         <td>${dose2}</td>
         <td>${vaccine}</td>
+        <td>${slots}</td>
+
       </tr>`
-            }
-            
-            console.log(cowinhtml);
+                    }
 
-            document.querySelector('.cowin').innerHTML = cowinhtml;
-        }});
-    
+                    console.log(cowinhtml);
 
-    });
+                    document.querySelector('.cowin').innerHTML = cowinhtml;
+                }
+            });
+
+
+        });
 
 
 
@@ -146,6 +166,7 @@
             overflow-x: scroll;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             background-color: cornsilk;
+            
         }
 
         .internal-table {
@@ -156,7 +177,8 @@
             max-width: 100%;
             height: 100px;
             font-family: "Times New Roman", Times, serif;
-            border: 2;
+            align-content:center;
+           
 
         }
     </style>
@@ -189,55 +211,61 @@
         </h2>
 
         <!-- Photo Grid -->
-<center>
-        <div class="w3-row-padding " style="margin-bottom:80px">
-
-
-
-
-            <div ><br>
-                <form id="pin_form">
-                    <label id="pin_label">Pin-Code</label>
-                    <input type="text" id="pin">
-                    <p id="getR">Submit</p>
-                </form>
-
-                <h3 style="color:crimson;margin-left: auto; border-radius:10px;">Vaccination Center</h3>
-                <div class="table">
-                    <table class="internal-table">
-                        <thead>
-                            <tr class="label-div">
-                                <th style="color:rgb(104, 39, 209)">Center ID</th>
-                                <th style="color:rgb(4, 39, 33)">Name</th>
-                                <th style="color:rgb(226, 12, 12)">District Name</th>
-                                <th style="color:rgb(15, 48, 16)">From</th>
-                                <th style="color:rgb(53, 54, 47)">To</th>
-                                <th style="color:rgb(4, 39, 33)">Available Capacity</th>
-                                <th style="color:rgb(4, 39, 33)">Dose1 Availability</th>
-                                <th style="color:rgb(4, 39, 33)">Dose2 Availability</th>
-                                <th style="color:rgb(4, 39, 33)">Vaccination type</th>
-                            </tr>
-                        </thead>
-                        <tbody class="cowin"></tbody>
-                    </table>
-                </div>
-                <br>
-            </div>
-        </div>
         <center>
-        <footer class="w3-container  w3-light-grey w3-center " style="padding-top:15px;padding-bottom: 15px;">
+            <div class="w3-row-padding " style="margin-bottom:80px">
 
-            <p>Click here to know about the developer &nbsp; &nbsp; <a
-                    href="https://www.linkedin.com/in/yash-gupta-0763a7162/" target="_blank" class="w3-text-green">YASH
-                    GUPTA</a> &nbsp; & &nbsp; <a href="https://www.linkedin.com/in/zia-fatima-5325b0169/" target="_blank"
-                    class="w3-text-green">ZIA FATIMA</a></p>
-        </footer>
 
-        <!-- End Page Content -->
+
+
+                <div><br>
+                    <form id="pin_form">
+                        
+                        <label id="pin_label">Pin-Code</label>
+                        <input type="text" id="pin">
+                        <input type="button" value="Search" id="getR">
+                        <br><br>
+                        <a style="color: chocolate; border: #000d20;" href = "https://selfregistration.cowin.gov.in/" target="_blank">
+                            Register for Vaccination</a>
+                    </form>
+
+                    <h3 style="color:crimson;margin-left: auto; border-radius:10px;">Vaccination Center</h3>
+                    <div class="table">
+                        <table class="internal-table">
+                            <thead>
+                                <tr class="label-div">
+                                    <th style="color:rgb(0, 0, 0)">Center ID</th>
+                                    <th style="color:rgb(255, 113, 19)">Name</th>
+                                    <th style="color:rgb(226, 12, 12)">District Name</th>
+                                    <th style="color:rgb(40, 87, 42)">From</th>
+                                    <th style="color:rgb(35, 68, 214)">To</th>
+                                    <th style="color:rgb(59, 165, 147)">Available Capacity</th>
+                                    <th style="color:rgb(136, 131, 216)">Dose1 Availability</th>
+                                    <th style="color:rgb(231, 58, 188)">Dose2 Availability</th>
+                                    <th style="color:rgb(240, 99, 34)">Vaccination type</th>
+                                    <th style="color:rgb(27, 209, 179)">Slots</th>
+                                </tr>
+                            </thead>
+                            <tbody class="cowin"></tbody>
+                        </table>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <center>
+                <footer class="w3-container  w3-light-grey w3-center " style="padding-top:15px;padding-bottom: 15px;">
+
+                    <p>Click here to know about the developer &nbsp; &nbsp; <a
+                            href="https://www.linkedin.com/in/yash-gupta-0763a7162/" target="_blank"
+                            class="w3-text-green">YASH
+                            GUPTA</a> &nbsp; & &nbsp; <a href="https://www.linkedin.com/in/zia-fatima-5325b0169/"
+                            target="_blank" class="w3-text-green">ZIA FATIMA</a></p>
+                </footer>
+
+                <!-- End Page Content -->
     </div>
 
     <!-- Footer -->
-    
+
 
 </body>
 
