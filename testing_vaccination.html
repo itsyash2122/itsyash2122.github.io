@@ -54,8 +54,13 @@
             pin_code = document.getElementById("pin").value;
             $.ajax({
                 type: "get",
-                url: "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pin_code + "&date=30-06-2021",
+                url: "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pin_code + "&date=01-07-2021",
                 success: function (api) {
+                    
+                    if (api.sessions.length==0){
+                        alert("There are no available dose for now in this region");
+                        }
+
                     var x = "Hello mr.";
                     var cowinhtml = "";
                     var center_id = "";
@@ -68,6 +73,7 @@
                     var dose2 = "";
                     var vaccine = "";
                     var slots=[];
+                    
                     for (i = 0; i < api.sessions.length; i = i + 1) {
                         center_id = api.sessions[i].center_id;
                         name = api.sessions[i].name;
@@ -101,6 +107,8 @@
                     console.log(cowinhtml);
 
                     document.querySelector('.cowin').innerHTML = cowinhtml;
+                
+                
                 }
             });
 
