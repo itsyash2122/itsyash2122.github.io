@@ -52,9 +52,11 @@
 
         $(document).on("click", "#getR", function () {
             pin_code = document.getElementById("pin").value;
+            var dateobj = new Date();
+
             $.ajax({
                 type: "get",
-                url: "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pin_code + "&date=01-07-2021",
+                url: "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pin_code + "&date="+dateobj.getDate()+"-"+(dateobj.getMonth()+1)+"-"+dateobj.getFullYear(),
                 success: function (api) {
                     
                     if (api.sessions.length==0){
