@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vaccination Center</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,
+        h1 {
+            font-family: "Raleway", Arial, sans-serif;
+            background-image: url(https://image.freepik.com/free-vector/realistic-coronavirus-background_23-2148497718.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover
+        }
+
+        h1 {
+            letter-spacing: 6px
+        }
+
+        .w3-row-padding img {
+            margin-bottom: 12px
+        }
+    </style>
+
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+
+    <script type = "text/javascript" language="javascript">
+
+
+    $(document).on("click","#getR",function(){
+        pin_code=document.getElementById("pin").value;
+        $.ajax({type:"get",
+            url:"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode="+pin_code+"&date=30-06-2021",
+        success: function(api){
+            var x="Hello mr.";
+            var cowinhtml = "";
+            var center_id = "";
+            var name = "";
+            var district_name = "";
+            var from = "";
+            var to = "";
+            var available_cap = "";
+            var dose1 = "";
+            var dose2 = "";
+            var vaccine = "";
+            console.log(x);
+            for (i = 0; i < api.sessions.length; i = i + 1) {
+                center_id = api.sessions[i].center_id;
+                name = api.sessions[i].name;
+                district_name = api.sessions[i].district_name;
+                from = api.sessions[i].from;
+                to = api.sessions[i].to;
+                available_cap = api.sessions[i].available_capacity;
+                dose1 = api.sessions[i].available_capacity_dose1;
+                dose2 = api.sessions[i].available_capacity_dose2;
+                vaccine = api.sessions[i].vaccine;
+                cowinhtml +=
+                    `<tr>
+        <td>${center_id}</td>
+        <td>${name}</td>
+        <td>${district_name}</td>
+        <td>${from}</td>
+        <td>${to}</td>
+        <td>${available_cap}</td>
+        <td>${dose1}</td>
+        <td>${dose2}</td>
+        <td>${vaccine}</td>
+      </tr>`
+            }
+            
+            console.log(cowinhtml);
+
+            document.querySelector('.cowin').innerHTML = cowinhtml;
+        }});
+    
+
+    });
+
+
+
+
+
+    </script>
+    <style>
+        .resource-list {
+            padding-left: 20px;
+            padding-right: 20px;
+
+
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .resource-container {
+            display: flex;
+            border-bottom: 1px solid #979797;
+            cursor: pointer;
+        }
+
+        .resource-info-container {
+            flex-grow: 1;
+            color: thistle;
+        }
+
+
+
+        .resource-details {
+            font-size: 17px;
+            color: rgb(148, 221, 226);
+            margin-top: 5px;
+        }
+
+
+        .resource-list-container {
+            max-width: 500px;
+
+            padding-left: 5px;
+            padding-top: 5px;
+            opacity: 1;
+
+            z-index: 30;
+
+
+            bottom: 20px;
+        }
+
+
+        .table {
+
+            margin-left: auto;
+            border-radius: 10px;
+            font-family: "Times New Roman", Times, serif;
+            max-width: 100%;
+            height: 500px;
+            overflow-y: scroll;
+            overflow-x: scroll;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: cornsilk;
+        }
+
+        .internal-table {
+
+            border-radius: 10px;
+
+            border-radius: 10px;
+            max-width: 100%;
+            height: 100px;
+            font-family: "Times New Roman", Times, serif;
+            border: 2;
+
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-content" style="max-width:1500px">
+
+        <!-- Header -->
+        <header class="w3-panel w3-center w3-opacity" style="background-image: linear-gradient(#000d20,#020202 );">
+            <div style=" padding-top: 15px;padding-bottom: 15px;">
+                <div>
+
+                    <a href="main.html" class=" w3-button w3-light-grey"><b>Home<b></a>
+                    <a href="country.html" class=" w3-button w3-light-grey"><b>India Updates<b></a>
+                    <a href="world.html" class=" w3-button w3-light-grey"><b>World Updates<b></a>
+                    <a href="aboutcovid19.html" class=" w3-button w3-light-grey"><b>About Covid19<b></a>
+                </div>
+            </div>
+
+        </header>
+
+        <h2 class=" w3-center"
+            style="color: rgb(34, 34, 34); font-size:40px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;text-shadow: 7px 7px 15px 1px rgba(0,0,0,0.16);">
+            Search Nearby Vaccination Center
+        </h2>
+
+        <!-- Photo Grid -->
+<center>
+        <div class="w3-row-padding " style="margin-bottom:80px">
+
+
+
+
+            <div ><br>
+                <form id="pin_form">
+                    <label id="pin_label">Pin-Code</label>
+                    <input type="text" id="pin">
+                    <p id="getR">Submit</p>
+                </form>
+
+                <h3 style="color:crimson;margin-left: auto; border-radius:10px;">Vaccination Center</h3>
+                <div class="table">
+                    <table class="internal-table">
+                        <thead>
+                            <tr class="label-div">
+                                <th style="color:rgb(104, 39, 209)">Center ID</th>
+                                <th style="color:rgb(4, 39, 33)">Name</th>
+                                <th style="color:rgb(226, 12, 12)">District Name</th>
+                                <th style="color:rgb(15, 48, 16)">From</th>
+                                <th style="color:rgb(53, 54, 47)">To</th>
+                                <th style="color:rgb(4, 39, 33)">Available Capacity</th>
+                                <th style="color:rgb(4, 39, 33)">Dose1 Availability</th>
+                                <th style="color:rgb(4, 39, 33)">Dose2 Availability</th>
+                                <th style="color:rgb(4, 39, 33)">Vaccination type</th>
+                            </tr>
+                        </thead>
+                        <tbody class="cowin"></tbody>
+                    </table>
+                </div>
+                <br>
+            </div>
+        </div>
+        <center>
+        <footer class="w3-container  w3-light-grey w3-center " style="padding-top:15px;padding-bottom: 15px;">
+
+            <p>Click here to know about the developer &nbsp; &nbsp; <a
+                    href="https://www.linkedin.com/in/yash-gupta-0763a7162/" target="_blank" class="w3-text-green">YASH
+                    GUPTA</a> &nbsp; & &nbsp; <a href="https://www.linkedin.com/in/zia-fatima-5325b0169/" target="_blank"
+                    class="w3-text-green">ZIA FATIMA</a></p>
+        </footer>
+
+        <!-- End Page Content -->
+    </div>
+
+    <!-- Footer -->
+    
+
+</body>
+
+</html>
